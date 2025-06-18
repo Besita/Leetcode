@@ -5,20 +5,18 @@ class Solution {
             return new int[0][0];
         Arrays.sort(nums);
         List<int[]> ans=new ArrayList<>();
-        int[] temp;
         int i=0;
         while(i<n){
-            temp=new int[3];
-            temp[0]=nums[i];
-            temp[1]=nums[i+1];
-            temp[2]=nums[i+2];
+            int a=nums[i];
+            int b=nums[i+1];
+            int c=nums[i+2];
 
-            if(temp[2]-temp[0]>k)
+            if(c-a>k)
                 return new int[0][0];
                 
-            ans.add(temp);
+            ans.add(new int[]{a,b,c});
             i+=3;
         }
-        return ans.toArray(new int[ans.size()][3]);
+        return ans.toArray(new int[ans.size()][]);
     }
 }

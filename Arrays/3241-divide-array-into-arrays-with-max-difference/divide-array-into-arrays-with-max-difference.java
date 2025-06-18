@@ -10,10 +10,8 @@ class Solution {
             int a=nums[i];
             int b=nums[i+1];
             int c=nums[i+2];
-
             if(c-a>k)
-                return new int[0][0];
-                
+                return new int[0][0];                
             ans.add(new int[]{a,b,c});
             i+=3;
         }

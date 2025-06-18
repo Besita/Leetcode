@@ -35,8 +35,32 @@ class Solution {
         }
         return ans;
     }
+    public String lps(String s){
+        int n=s.length();
+        int[] lps=new int[n];
+        int len=0;
+        int i=1;
+        while(i<n){
+            if(s.charAt(i)==s.charAt(len)){
+                lps[i]=len+1;
+                len++;
+                i++;
+            }
+            else{
+                if(len==0){
+                    lps[i]=0;
+                    i++;
+                }
+                else{
+                    len=lps[len-1];
+                }
+            }
+        }
+        return s.substring(0,lps[n-1]);
+    }
     public String longestPrefix(String s) {
         //return usingPrefix(s);//TC:O(n) SC:O(n) //MLE error
-        return usingPrefixwithoutmemory(s);
+       // return usingPrefixwithoutmemory(s);
+        return lps(s);
     }
 }

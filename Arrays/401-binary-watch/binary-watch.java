@@ -8,9 +8,9 @@ class Solution {
             for(int min=0;min<60;min++){
                 if(Integer.bitCount(hour)+Integer.bitCount(min)==turnedOn){
                     if(min<10)
-                        ans.add(Integer.toString(hour)+":0"+Integer.toString(min));
+                        ans.add(hour+":0"+min);
                     else
-                        ans.add(Integer.toString(hour)+":"+Integer.toString(min));
+                        ans.add(hour+":"+min);
                 }
             }
         }
@@ -37,15 +37,13 @@ class Solution {
         }
     }
     public List<String> readBinaryWatch(int turnedOn) {
-        //return bruteforce(turnedOn);//TC:O(12*60) SC:O(12*60)
+        return bruteforce(turnedOn);//TC:O(12*60) SC:O(12*60)
 
-        if(turnedOn>10)
+        /*if(turnedOn>10)
             return new ArrayList<>();
-
-
         List<String> ans=new ArrayList<>();
         int[] arr={1,2,4,8,1,2,4,8,16,32};
-        backtracking(turnedOn,0,0,0,ans,arr);
-        return ans;
+        backtracking(turnedOn,0,0,0,ans,arr);//TC:O(2^n)
+        return ans;*/
     }
 }

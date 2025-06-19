@@ -7,9 +7,9 @@ class Solution {
         }
 
         temp.add(candidates[curr]);
-        backtracking(candidates,n,curr,target-candidates[curr],temp,ans);
+        backtracking(candidates,n,curr,target-candidates[curr],temp,ans);//include
         temp.remove(temp.size()-1);
-        backtracking(candidates,n,curr+1,target,temp,ans);
+        backtracking(candidates,n,curr+1,target,temp,ans);//exclude
     }
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> ans=new ArrayList<List<Integer>>();

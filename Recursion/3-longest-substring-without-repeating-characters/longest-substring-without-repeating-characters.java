@@ -47,8 +47,34 @@ class Solution {
         }
         return maxlen;
     }
+    public int usingarray(String s){
+        int[] arr=new int[128];
+        Arrays.fill(arr,0);
+        int left=0;
+        int right=0;
+        int maxlen=1;
+        int n=s.length();
+        if(n==0)
+            return 0;        
+        while(right<n && left<n){
+            if(arr[s.charAt(right)]==0){
+                arr[s.charAt(right)]=1;
+                maxlen=Math.max(maxlen,right-left+1);
+            }
+            else{               
+                while(s.charAt(left)!=s.charAt(right)){ 
+                    arr[s.charAt(left)]=0;          
+                    left++;    
+                }
+                left++;
+            }
+            right++;
+        }
+        return maxlen;
+    }
     public int lengthOfLongestSubstring(String s) {
         //return hashmap(s);
-        return hashset(s);
+        //return hashset(s);
+        return usingarray(s);
     }
 }

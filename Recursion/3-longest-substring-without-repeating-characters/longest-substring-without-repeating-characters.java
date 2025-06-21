@@ -23,7 +23,32 @@ class Solution {
         }
         return maxlen;
     }
+    public int hashset(String s){
+        HashSet<Character> set=new HashSet<>();
+        int left=0;
+        int right=0;
+        int maxlen=1;
+        int n=s.length();
+        if(n==0)
+            return 0;        
+        while(right<n && left<n){
+            if(set.contains(s.charAt(right))==false){
+                set.add(s.charAt(right));
+                maxlen=Math.max(maxlen,right-left+1);
+            }
+            else{               
+                while(s.charAt(left)!=s.charAt(right)){ 
+                    set.remove(s.charAt(left));          
+                    left++;    
+                }
+                left++;
+            }
+            right++;
+        }
+        return maxlen;
+    }
     public int lengthOfLongestSubstring(String s) {
-        return hashmap(s);
+        //return hashmap(s);
+        return hashset(s);
     }
 }

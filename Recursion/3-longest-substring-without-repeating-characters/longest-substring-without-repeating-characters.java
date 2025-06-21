@@ -1,5 +1,5 @@
 class Solution {
-    public int lengthOfLongestSubstring(String s) {
+    public int hashmap(String s){
         HashMap<Character,Integer> map=new HashMap<>();
         int left=0;
         int right=0;
@@ -22,5 +22,8 @@ class Solution {
             right++;
         }
         return maxlen;
+    }
+    public int lengthOfLongestSubstring(String s) {
+        return hashmap(s);
     }
 }

@@ -1,6 +1,6 @@
 class Solution {
     void backtracking(int[] nums,int idx,List<Integer> curr,List<List<Integer>> ans){
-        if(idx>=nums.length){
+        if(idx==nums.length){
             ans.add(new ArrayList<>(curr));
             return;
         }

@@ -1,5 +1,5 @@
 class Solution {
-    public int winningPlayerCount(int n, int[][] pick) {
+    int usingHashMap(int n,int[][] pick){
         Map<Integer,Map<Integer,Integer>> map=new HashMap<>();
         for(int[] i:pick){
             map.putIfAbsent(i[0],new HashMap<>());
@@ -7,6 +7,7 @@ class Solution {
         }
 
         int ans=0;
+        
         for(int i=0;i<n;i++){
             Map<Integer,Integer> curr=map.get(i);
             if(curr!=null){
@@ -19,6 +20,10 @@ class Solution {
             }
         }
         return ans;
+    }
+    public int winningPlayerCount(int n, int[][] pick) {
 
+        return usingHashMap(n,pick);
+        
     }
 }

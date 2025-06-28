@@ -18,7 +18,17 @@ class Solution {
         for(right=0;right<s.length();right++){        
             map[s.charAt(right)]++;            
              
-            if(compareTwoArray(map,patt)){
+            boolean state=compareTwoArray(map,patt);
+            while(state==true){
+                if(right-left+1 < maxlen){
+                    maxlen=right-left+1;
+                    ans=s.substring(left,right+1);
+                }
+                map[s.charAt(left)]--;
+                left++;
+                state=compareTwoArray(map,patt);
+            }
+            /*if(compareTwoArray(map,patt)){
                 do{                
                     map[s.charAt(left)]--;
                     left++;
@@ -27,7 +37,7 @@ class Solution {
                     maxlen=right-left+2;
                     ans=s.substring(left-1,right+1);
                 }
-            }
+            }*/
         }
         return ans;
     }

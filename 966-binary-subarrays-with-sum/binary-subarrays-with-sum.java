@@ -13,8 +13,8 @@ class Solution {
                 sum-=nums[left];
                 left++;
             }
-
-            ans+=right-left+1;
+            if(sum<=goal)
+                ans+=right-left+1;
         }
         return ans;
     }

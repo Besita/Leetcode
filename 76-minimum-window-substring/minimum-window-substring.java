@@ -7,7 +7,7 @@ class Solution {
             return s;
         int left=0;
         int right=0;
-        int maxlen=s.length();
+        int maxlen=Integer.MAX_VALUE;
         String ans="";
         int[] map=new int[128];
         int[] patt=new int[128];
@@ -23,8 +23,8 @@ class Solution {
                     map[s.charAt(left)]--;
                     left++;
                 } while(compareTwoArray(map,patt));
-                if(right-left+1 < maxlen){
-                    maxlen=right-left+1;
+                if(right-left+2 < maxlen){
+                    maxlen=right-left+2;
                     ans=s.substring(left-1,right+1);
                 }
             }

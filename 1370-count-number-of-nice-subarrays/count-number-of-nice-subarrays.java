@@ -18,25 +18,25 @@ class Solution {
         int n=nums.length;
         int odd=0;
         int ans=0;
-        for(int i=0;i<n;i++){
-            if(nums[i]%2==1)
+        for(right=0;right<n;right++){
+            if(nums[right]%2==1)
                 odd++;            
             
-            while(odd>k){
+            while(odd>k){ //if odd greater than k move left until odd becomes k update mid accordingly
                 if(nums[left]%2==1)
                     odd--;
                 left++;
                 mid=left;
             }
 
-            if(odd==k){
+            if(odd==k){// if off is k, move mid until you find first odd element. add mid-left+1
                 while(nums[mid]%2==0){
                     mid++;
                 }
                 ans+=mid-left+1;
             }            
         }
-        return ans;
+        return ans; 
     }
     public int numberOfSubarrays(int[] nums, int k) {
        //return optimized(nums,k);

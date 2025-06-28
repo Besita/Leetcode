@@ -14,13 +14,14 @@ class Solution {
                 mid++;
                 left=mid;
             }
-
-            while(map.get(nums[mid])>1){
-                map.put(nums[mid],map.get(nums[mid])-1);
-                mid++;
-            }
-            if(map.size()==k)
+            
+            if(map.size()==k){ 
+                while(map.get(nums[mid])>1){
+                    map.put(nums[mid],map.get(nums[mid])-1);
+                    mid++;
+                }
                 ans+=mid-left+1;
+            }
         }
         return ans;
     }
@@ -44,7 +45,7 @@ class Solution {
         return count;
     }
     public int subarraysWithKDistinct(int[] nums, int k) {
-        //return using3pointer(nums,k);
-        return using2pointer(nums,k)-using2pointer(nums,k-1);
+        return using3pointer(nums,k);
+        //return using2pointer(nums,k)-using2pointer(nums,k-1);
     }
 }

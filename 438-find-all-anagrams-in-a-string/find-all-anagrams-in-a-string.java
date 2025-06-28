@@ -14,7 +14,7 @@ class Solution {
         while(j<n && i>=0){
             arr[s.charAt(j)-'a']++;
             winsize++;
-            j++;
+            
             if(winsize==p.length()){
                 if(Arrays.equals(arr,patt))
                     ans.add(i);
@@ -22,6 +22,7 @@ class Solution {
                 winsize--;
                 i++;
             }
+            j++;
         }
         return ans;
     }

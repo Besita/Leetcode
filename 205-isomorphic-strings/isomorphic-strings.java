@@ -6,12 +6,11 @@ class Solution {
                 if(map.get(s.charAt(i))!=t.charAt(i)){
                     return false;
                 }
-            }else{
-                if(map.containsValue(t.charAt(i)) )
-                    return false;
-                else
-                    map.put(s.charAt(i),t.charAt(i));
-            }
+            }else if(map.containsValue(t.charAt(i)) )
+                return false;
+            else
+                map.put(s.charAt(i),t.charAt(i));
+            
         }
         return true;
 

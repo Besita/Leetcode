@@ -18,27 +18,22 @@ class Solution {
     }
     public List<Integer> usingVoterAlgo(int[] nums){
         int n=nums.length;
-        int thresh=n/3;
-        List<Integer> ans=new ArrayList<>();
-        int count1=0;
-        int count2=0;
-        int candidate1=0;
-        int candidate2=0;
+        int freq=n/3+1;
+        int count1=0,count2=0;
+        int cand1=0,cand2=0;
         for(int i=0;i<n;i++){
-            if(count1==0 && candidate2!=nums[i]){
-                candidate1=nums[i];
-                count1=1;
-            }
-            else if(count2==0 && candidate1!=nums[i]){
-                candidate2=nums[i];
-                count2=1;
-            }
-            else if(candidate1==nums[i]){ 
+            if(count1==0 && nums[i]!=cand2){
+                cand1=nums[i];
                 count1++;
             }
-            else if(candidate2==nums[i]){ 
+            else if(count2==0 && nums[i]!=cand1){
+                cand2=nums[i];
                 count2++;
             }
+            else if(nums[i]==cand1)
+                count1++;
+            else if(nums[i]==cand2)
+                count2++;
             else{
                 count1--;
                 count2--;
@@ -46,19 +41,17 @@ class Solution {
         }
         count1=0;
         count2=0;
+        List<Integer> ans=new ArrayList<>();
         for(int i=0;i<n;i++){
-            if(nums[i]==candidate1)
+            if(nums[i]==cand1)
                 count1++;
-            else if(nums[i]==candidate2)
+            else if(nums[i]==cand2)
                 count2++;
         }
-
-        if(count1>thresh){ 
-            ans.add(candidate1);
-        }
-        if(count2>thresh){ 
-            ans.add(candidate2);
-        }
+        if(count1>=freq)
+            ans.add(cand1);
+        if(count2>=freq)
+            ans.add(cand2);
         return ans;
     }
     List<Integer> usingsorting(int[] nums){
@@ -83,7 +76,7 @@ class Solution {
     }
     public List<Integer> majorityElement(int[] nums) {
        //return usingHashmap(nums);
-        return usingsorting(nums);
-        //return usingVoterAlgo(nums);//using Moore's voter algorithm
+        //return usingsorting(nums);
+        return usingVoterAlgo(nums);//using Moore's voter algorithm
     }
 }

@@ -1,5 +1,5 @@
 class Solution {
-    public int timeRequiredToBuy(int[] tickets, int k) {
+    public int usingQueue(int[] tickets,int k){
         Queue<Integer> pq=new LinkedList<>();
         int n=tickets.length;
         for(int i=0;i<n;i++)
@@ -18,5 +18,24 @@ class Solution {
             
         }
         return -1;
+    }
+    public int usingArray(int[] tickets,int k){
+        int n=tickets.length;
+        int count=0;
+        while(tickets[k]>0){
+            for(int i=0;i<n;i++){
+                if(tickets[i]>0){
+                    tickets[i]--;
+                    count++;
+                    if(tickets[i]==0 && i==k)
+                        return count;
+                }                
+            }
+        }
+        return -1;
+    }
+    public int timeRequiredToBuy(int[] tickets, int k) {
+        //return usingQueue(tickets,k);
+        return usingArray(tickets,k);
     }
 }

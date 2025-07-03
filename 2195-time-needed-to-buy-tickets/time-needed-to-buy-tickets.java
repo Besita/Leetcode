@@ -7,14 +7,14 @@ class Solution {
 
         int count=0;
         while(!pq.isEmpty()){
-            int temp=pq.poll();
-            tickets[temp]--;
+            int front=pq.poll();
+            tickets[front]--;
             count++;
-            
-            if(tickets[temp]==0 && temp==k)
+
+            if(tickets[front]==0 && front==k)
                 return count;
-            if(tickets[temp] > 0)
-                pq.add(temp);
+            if(tickets[front] > 0)
+                pq.add(front);
             
         }
         return -1;

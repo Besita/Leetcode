@@ -34,8 +34,20 @@ class Solution {
         }
         return -1;
     }
+    public int optimized(int[] tickets,int k){
+        int n=tickets.length;
+        int time=0;
+        for(int i=0;i<n;i++){
+            if(i<=k)
+                time+=Math.min(tickets[i],tickets[k]);
+            else
+                time+=Math.min(tickets[i],tickets[k]-1);
+        }
+        return time;
+    }
     public int timeRequiredToBuy(int[] tickets, int k) {
-        //return usingQueue(tickets,k);
-        return usingArray(tickets,k);
+        //return usingQueue(tickets,k); //TC:O(nm) SC:O(n)
+        //return usingArray(tickets,k); //TC:O(nm) SC:O(n)
+        return optimized(tickets,k);//TC:O(n) SC:O(1)
     }
 }

@@ -2,7 +2,7 @@ class Solution {
     int[] MinElementLeft(
         int[] arr){
         int n=arr.length;
-        Stack<Integer> st=new Stack<>();
+        Deque<Integer> st=new ArrayDeque<>();
         int[] ans=new int[n];
         Arrays.fill(ans,-1);
         for(int i=0;i<n;i++){
@@ -18,7 +18,7 @@ class Solution {
     }
     int[] MinElementRight(int[] arr){
         int n=arr.length;
-        Stack<Integer> st=new Stack<>();
+        Deque<Integer> st=new ArrayDeque<>();
         int[] ans=new int[n];
         Arrays.fill(ans,n);
         //System.out.println();

@@ -43,7 +43,7 @@ class Solution {
             int left=(i-leftmin[i])%mod;
             int right=(rightmin[i]-i)%mod;
             long inter=(long) (left*right)%mod;
-            ans+=(inter * arr[i])%mod;
+            ans+=(long)(inter * arr[i])%mod;
             ans%=mod;
         }
         return (int)ans;

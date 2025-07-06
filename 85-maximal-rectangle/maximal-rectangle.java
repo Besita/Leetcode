@@ -1,6 +1,6 @@
 class Solution {
     int[] smallelementleft(int[] arr){
-        Stack<Integer> st=new Stack<>();
+        Deque<Integer> st=new ArrayDeque<>();
         int n=arr.length;
         int[] ans=new int[n];
         Arrays.fill(ans,-1);
@@ -16,7 +16,7 @@ class Solution {
         return ans;
     }
     int[] smallelementright(int[] arr){
-        Stack<Integer> st=new Stack<>();
+        Deque<Integer> st=new ArrayDeque<>();
         int n=arr.length; 
         int[] ans=new int[n];
         Arrays.fill(ans,n);

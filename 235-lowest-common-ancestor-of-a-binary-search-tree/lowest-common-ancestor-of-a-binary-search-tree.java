@@ -15,12 +15,10 @@ class Solution {
 
         if(p.val<root.val && q.val<root.val)
             return recursion(root.left,p,q);
-
-        if(p.val>root.val && q.val>root.val)
+        else if(p.val>root.val && q.val>root.val)
             return recursion(root.right,p,q);
-        
-        //if(p.val<root.val && q.val>root.val)
-        return root;
+        else
+            return root;
 
     }
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {

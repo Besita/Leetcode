@@ -22,9 +22,28 @@ class Solution {
         recursion(root.left,ans);
         recursion(root.right,ans);
     }
-    public List<Integer> preorderTraversal(TreeNode root) {
+    List<Integer> iterative(TreeNode root){
         List<Integer> ans=new ArrayList<>();
-        recursion(root,ans);
+        Stack<TreeNode> st=new Stack<>();
+        TreeNode curr=root;
+        while(curr!=null || !st.isEmpty()){
+            if(curr!=null){
+                st.push(curr);
+                ans.add(curr.val);
+                curr=curr.left;
+            }
+            else{
+                curr=st.peek().right;
+                st.pop();
+            }
+        }
         return ans;
+    }
+    public List<Integer> preorderTraversal(TreeNode root) {
+        //List<Integer> ans=new ArrayList<>();
+        //recursion(root,ans);
+        //return ans;
+
+        return iterative(root);        
     }
 }

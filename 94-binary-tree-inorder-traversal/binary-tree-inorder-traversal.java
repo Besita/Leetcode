@@ -29,19 +29,22 @@ class Solution {
         while(curr!=null || !st.isEmpty()){
             if(curr!=null){
                 st.push(curr);
-                ans.add(curr.val);
                 curr=curr.left;
             }
             else{
-                curr=st.peek().right;
+                curr=st.peek();
+                ans.add(curr.val);
+                curr=curr.right;
                 st.pop();
             }
         }
         return ans;
     }
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> ans=new ArrayList<>();
+        /*List<Integer> ans=new ArrayList<>();
         recursion(root,ans);
-        return ans;
+        return ans;*/
+
+        return iterative(root);
     }
 }

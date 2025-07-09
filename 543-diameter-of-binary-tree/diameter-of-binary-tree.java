@@ -15,20 +15,19 @@
  */
 class Solution {
     int maxdiam=0;
-    int[] recursion(TreeNode root){
+    int recursion(TreeNode root){
         if(root==null)
-            return new int[]{0,0};
-        int[] left=recursion(root.left);
-        int[] right=recursion(root.right);
+            return 0;
+        int left=recursion(root.left);
+        int right=recursion(root.right);
 
-        int currdiam=left[1]+right[1];
-        maxdiam=Math.max(maxdiam,currdiam);
-        int maxh=1+Math.max(left[1],right[1]);
+        maxdiam=Math.max(maxdiam,left+right);
+        int maxh=1+Math.max(left,right);
 
-        return new int[]{currdiam,maxh};
+        return maxh;
     }
     public int diameterOfBinaryTree(TreeNode root) {
-        int[] diameter=recursion(root);
+        int maxh=recursion(root);
         return maxdiam;
     }
 }

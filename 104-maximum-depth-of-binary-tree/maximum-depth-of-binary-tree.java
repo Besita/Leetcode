@@ -17,8 +17,11 @@ class Solution {
     int recursion(TreeNode root){
         if(root==null)
             return 0;
+
+        int left=1+recursion(root.left);
+        int right=1+recursion(root.right);
         
-        return 1+(Math.max(recursion(root.left),recursion(root.right)));
+        return Math.max(left,right);
         
     }
     public int maxDepth(TreeNode root) {       

@@ -21,9 +21,33 @@ class Solution {
         recursive(root.right,ans);
         ans.add(root.val);
     }
-    public List<Integer> postorderTraversal(TreeNode root) {
+    List<Integer> iterative(TreeNode root){
         List<Integer> ans=new ArrayList<>();
-        recursive(root,ans);
+        if(root==null)
+            return ans;
+        TreeNode curr=root;
+        Stack<TreeNode> st=new Stack<>();       
+    
+        while(!st.isEmpty() || curr!=null){
+            if(curr!=null){
+                st.push(curr);
+                ans.add(curr.val);
+                curr=curr.right;
+            }
+            else{
+                TreeNode temp=st.peek();
+                st.pop();
+                curr=temp.left;
+            }                       
+        }
+        Collections.reverse(ans);
         return ans;
+    }
+    public List<Integer> postorderTraversal(TreeNode root) {
+        /*List<Integer> ans=new ArrayList<>();
+        recursive(root,ans);
+        return ans;*/
+
+        return iterative(root);
     }
 }

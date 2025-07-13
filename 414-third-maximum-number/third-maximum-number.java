@@ -3,8 +3,8 @@ class Solution {
         int n=nums.length;
         TreeSet<Integer> set=new TreeSet<>();
         for(int i=0;i<n;i++){ //O(n)
-            //if(set.contains(nums[i]))//worstcase O(logn) avg O(1)
-            //    continue;
+            if(set.contains(nums[i]))//worstcase O(logn) avg O(1)
+                continue;
             set.add(nums[i]);  //log(n) for add remove in treeset 
         }
         /*Integer[] arr=set.toArray(new Integer[0]);

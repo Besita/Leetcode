@@ -38,9 +38,10 @@ class Solution {
         int right;
         for(curr=0;curr<n-2;curr++){ 
             //avoid duplicates
-            if(nums[curr]>0 || (curr-1>=0 && nums[curr]==nums[curr-1]))
+            if(nums[curr]>0) 
+                break;
+            if(curr-1>=0 && nums[curr]==nums[curr-1])
                 continue;
-
             left=curr+1;
             right=n-1;
             while(left<right){ 

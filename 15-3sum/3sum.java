@@ -1,5 +1,5 @@
 class Solution {
-    public List<List<Integer>> threeSum(int[] nums) {
+    public List<List<Integer>> usingSet(int[] nums) {
         Arrays.sort(nums);
         int n=nums.length;
         Set<List<Integer>> set=new HashSet<>();
@@ -28,5 +28,9 @@ class Solution {
             ans.add(new ArrayList<>(i));
         }
         return ans;
+    }
+    public List<List<Integer>> threeSum(int[] nums) {
+        return usingSet(nums);
+        
     }
 }            

@@ -8,6 +8,8 @@ class Solution {
         int left;
         int right;
         for(curr=0;curr<n-2;curr++){ 
+            if(nums[curr]>0)
+                continue;
             left=curr+1;
             right=n-1;
             while(left<right){ 

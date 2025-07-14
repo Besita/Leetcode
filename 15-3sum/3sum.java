@@ -37,9 +37,10 @@ class Solution {
         int left;
         int right;
         for(curr=0;curr<n-2;curr++){ 
-            //avoid duplicates
+            //already sorted and elem greater than target. dont search further
             if(nums[curr]>0) 
                 break;
+            //avoid duplicates
             if(curr-1>=0 && nums[curr]==nums[curr-1])
                 continue;
             left=curr+1;
@@ -47,13 +48,13 @@ class Solution {
             while(left<right){ 
                 int sum=nums[curr]+nums[left]+nums[right];
                 if(sum==0){
-                    ans.add(Arrays.asList(nums[curr],nums[left],nums[right]));
+                    ans.add(Arrays.asList(nums[curr],nums[left],nums[right])); 
                     int currleft=nums[left];
                     int currright=nums[right];
                     while(left<right && nums[left+1]==currleft) left++;
-                    while(left<right && nums[right-1]==currright)   right--;
+                    while(left<right && nums[right-1]==currright)   right--;                   
                     left++;
-                    right--;
+                    //right--;
                 }
                 else if(sum<0)
                     left++;

@@ -24,6 +24,22 @@ class Solution {
         }
         return ans;
     }
+
+    public int findStrength(int[][] mat,int r,int left,int right){
+        int ans=-1;
+        while(left<=right){
+            int mid=(left+right)/2;
+            if(mat[r][mid]==1 && mat[r][mid+1]==0){ 
+                ans=mid+1;
+                break;
+            }
+            else if(mat[r][mid]==0)
+                right=mid-1;
+            else
+                left=mid+1;
+        }
+        return ans;
+    }
      public int[] usingBinarysearch(int[][] mat,int k){
         int m=mat.length;
         int n=mat[0].length;
@@ -41,18 +57,7 @@ class Solution {
                 pq[i][1]=i;
             }
             else{
-                while(left<=right){
-                    int mid=(left+right)/2;
-                    if(mat[i][mid]==1 && mat[i][mid+1]==0){
-                        rowsum=mid+1;
-                        break;
-                    }
-                    else if(mat[i][mid]==0)
-                        right=mid-1;
-                    else
-                        left=mid+1;
-                }
-                pq[i][0]=rowsum;
+                pq[i][0]=findStrength(mat,i,left,right);
                 pq[i][1]=i;    
             }  
         }
@@ -65,6 +70,6 @@ class Solution {
     }
     public int[] kWeakestRows(int[][] mat, int k) {
         //return usingArrays(mat,k); //TC:O(n*m(calculating strength) + nlogn(sort)) SC:O(n*2) //3ms
-        return usingBinarysearch(mat,k); ////TC:O(n*logm(calculating strength) + nlogn(sort)) SC:O(n*2)
+        return usingBinarysearch(mat,k); ////TC:O(n*logm(calculating strength) + nlogn(sort)) SC:O(n*2)  //2ms
     }
 }

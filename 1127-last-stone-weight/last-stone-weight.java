@@ -27,8 +27,8 @@ class Solution {
     }
     public int lastStoneWeight(int[] stones) {
 
-        //return usingHeap(stones);//TC:(n logn) SC:O(n)
-        return usingArray(stones);//TC:O(n logn) SC:O(1)
+        return usingHeap(stones);//TC:(n logn) SC:O(n)
+        //return usingArray(stones);//TC:O(n logn) SC:O(1)
         
     }
 }

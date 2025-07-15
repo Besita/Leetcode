@@ -48,18 +48,14 @@ class Solution {
             int rowsum=0;
             int left=0;
             int right=n-1;
-            if(mat[i][0]==0) {
+            if(mat[i][0]==0) 
                 pq[i][0]=0;
-                pq[i][1]=i;
-            }
-            else  if(mat[i][right]==1){
+            else  if(mat[i][right]==1)
                 pq[i][0]=n;
-                pq[i][1]=i;
-            }
-            else{
+            else
                 pq[i][0]=findStrength(mat,i,left,right);
-                pq[i][1]=i;    
-            }  
+                   
+            pq[i][1]=i; 
         }
         Arrays.sort(pq,(a,b)->(a[0]==b[0])?a[1]-b[1]:a[0]-b[0]);
         int[] ans=new int[k];

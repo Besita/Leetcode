@@ -1,5 +1,5 @@
 class Solution {
-    public int findContentChildren(int[] g, int[] s) {
+    public int usingSort(int[] g,int[] s){
         Arrays.sort(g);
         Arrays.sort(s);
         int n=g.length;
@@ -13,10 +13,30 @@ class Solution {
                 j++;
                 count++;
             }
-            else{
+            else
                 j++;
+        }
+        return count;
+    }
+    public int usingHeap(int[] g,int[] s){
+        Arrays.sort(g);
+        PriorityQueue<Integer> pq=new PriorityQueue<>();
+        for(int i:s)
+            pq.add(i);
+
+        int count=0;
+        for(int i=0;i<g.length;i++){
+            while(!pq.isEmpty()){
+                if(g[i]<=pq.poll()){
+                    count++;
+                    break;
+                }
             }
         }
         return count;
+    }
+    public int findContentChildren(int[] g, int[] s) {
+        //return usingSort(g,s);//10ms
+        return usingHeap(g,s);
     }
 }

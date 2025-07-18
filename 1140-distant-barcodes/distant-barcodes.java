@@ -17,7 +17,7 @@ class Solution {
         while(!pq.isEmpty()){
             int[] curr=pq.poll();
             int count=curr[0];
-            while(count-- >0){
+            while(curr[0]-- >0){
                 if(i>=n) i=1;
                 ans[i]=curr[1];
                 i+=2;

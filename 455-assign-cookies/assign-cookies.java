@@ -36,7 +36,7 @@ class Solution {
         return count;
     }
     public int findContentChildren(int[] g, int[] s) {
-        //return usingSort(g,s);//10ms
-        return usingHeap(g,s);
+        return usingSort(g,s);//10ms
+        //return usingHeap(g,s);//25ms
     }
 }

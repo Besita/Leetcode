@@ -50,7 +50,7 @@ class Solution {
         return maxprofit;
     }
     public int maxProfitAssignment(int[] difficulty, int[] profit, int[] worker) {
-        //return usingSortgreedy(difficulty,profit,worker);
-        return usingMemoization(difficulty,profit,worker);
+        return usingSortgreedy(difficulty,profit,worker);
+        //return usingMemoization(difficulty,profit,worker);//5ms
     }
 }

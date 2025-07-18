@@ -10,11 +10,9 @@ class Solution {
         while(i<n && j<m){
             if(g[i]<=s[j]){
                 i++;
-                j++;
                 count++;
             }
-            else
-                j++;
+            j++;
         }
         return count;
     }

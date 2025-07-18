@@ -1,5 +1,5 @@
 class Solution {
-    public int maxProfitAssignment(int[] difficulty, int[] profit, int[] worker) {
+    public int usingSortgreedy(int[] difficulty, int[] profit, int[] worker) {
         int n=difficulty.length;
         int[][] diff_prof=new int[n][2];
         for(int i=0;i<n;i++){
@@ -24,5 +24,33 @@ class Solution {
             }
         }
         return ans;
+    }
+    public int usingMemoization(int[] difficulty, int[] profit, int[] worker) {
+        int maxval=0;
+        for(int i=0;i<difficulty.length;i++)
+            maxval=Math.max(maxval,difficulty[i]);
+        
+        for(int i=0;i<worker.length;i++)
+            maxval=Math.max(maxval,worker[i]);
+
+        int[] memo=new int[maxval+1];
+        for(int i=0;i<difficulty.length;i++){
+            memo[difficulty[i]]=Math.max(memo[difficulty[i]],profit[i]);
+        }
+
+        int maxsofar=0;
+        for(int i=0;i<=maxval;i++){            
+            maxsofar=Math.max(maxsofar,memo[i]);//updatemaxsofar
+            memo[i]=maxsofar;
+        }
+        int maxprofit=0;
+        for(int i=0;i<worker.length;i++){
+            maxprofit+=memo[worker[i]];
+        }
+        return maxprofit;
+    }
+    public int maxProfitAssignment(int[] difficulty, int[] profit, int[] worker) {
+        //return usingSortgreedy(difficulty,profit,worker);
+        return usingMemoization(difficulty,profit,worker);
     }
 }

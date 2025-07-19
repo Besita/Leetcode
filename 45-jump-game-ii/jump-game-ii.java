@@ -1,9 +1,29 @@
 class Solution {
     public int jump(int[] nums) {
         int n=nums.length;
-        return usingArray(nums,n); //TC:O(n*n)
+        //return usingArray(nums,n); //TC:O(n*n)
+        if(n<=1)
+            return 0;
+        return optimized(nums,n);
     }
-
+    public int optimized(int[] nums,int n){
+        int low=0;
+        int high=0;
+        int maxreach=0;
+        int jump=0;
+        for(int i=0;i<n;i++){
+            maxreach=Math.max(maxreach,i+nums[i]);
+            if(i==high){
+                low=high+1;
+                high=maxreach;
+                jump++;
+                if(maxreach>=n-1)
+                    break;
+            }
+            
+        }
+        return jump;
+    }
     public int usingArray(int[] nums,int n){
         int[] dp=new int[n];
         Arrays.fill(dp,Integer.MAX_VALUE);

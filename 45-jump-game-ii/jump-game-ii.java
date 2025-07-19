@@ -17,7 +17,7 @@ class Solution {
     public int jump(int[] nums) {
         int n=nums.length;
        //return recursion(nums,0,n);
-       return usingArray(nums,n);
+       return usingArray(nums,n); //TC:O(n*n)
     }
 
     public int usingArray(int[] nums,int n){
@@ -33,12 +33,4 @@ class Solution {
         return dp[0] == Integer.MAX_VALUE ? -1 : dp[0];
     }
 
-    private long slv(int n, int[] jumps, long[] memo) {
-        if (n == jumps.length - 1) return 0;
-        if (memo[n] != -1) return memo[n];
-        long min = Integer.MAX_VALUE;
-        for (int i = n + 1; i <= Math.min(jumps.length - 1, n + jumps[n]); i++)
-            min = Math.min(min, 1 + slv(i, jumps, memo));
-        return memo[n] = min;
-    }
 }

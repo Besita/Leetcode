@@ -19,9 +19,9 @@ class Solution {
             maxreach=Math.max(nums[i]+i,maxreach);
         }
         System.out.println(maxreach);
-        if(maxreach>=n-1)
-            return true;
-        return false;
+        //if(maxreach>=n-1)
+          //  return true;
+        return true;
     }
     public boolean canJump(int[] nums) {
         //return usingdp(nums);

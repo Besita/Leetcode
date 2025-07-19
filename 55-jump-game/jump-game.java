@@ -1,5 +1,5 @@
 class Solution {
-    public boolean canJump(int[] nums) {
+    public boolean usingdp(int[] nums){
         int n=nums.length;
         boolean[] dp=new boolean[n];
         dp[n-1]=true;
@@ -9,5 +9,22 @@ class Solution {
             }
         }
         return dp[0];
+    }
+    public boolean optimized(int[] nums){
+        int n=nums.length;
+        int maxreach=0;
+        for(int i=0;i<n;i++){
+            if(i>maxreach)
+                return false;
+            maxreach=Math.max(nums[i]+i,maxreach);
+        }
+        System.out.println(maxreach);
+        if(maxreach>=n-1)
+            return true;
+        return false;
+    }
+    public boolean canJump(int[] nums) {
+        //return usingdp(nums);
+        return optimized(nums);
     }
 }

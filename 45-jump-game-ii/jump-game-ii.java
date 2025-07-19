@@ -1,23 +1,7 @@
 class Solution {
-    
-    public int recursion(int[] nums,int curr,int n){
-        if(curr==n-1){
-            return 0;
-        }
-
-        int minjump=Integer.MAX_VALUE;              
-        for(int i=1;i<=nums[curr];i++){
-            //System.out.println("before: "+(curr+i)+" "+nums[curr+i]+" "+minjump);  
-            if(curr+i<n)
-                minjump=Math.min(minjump,1+recursion(nums,curr+i,n));
-            //System.out.println("after: "+(curr+i)+" "+nums[curr+i]+" "+minjump); 
-        }
-        return minjump;
-    }
     public int jump(int[] nums) {
         int n=nums.length;
-       //return recursion(nums,0,n);
-       return usingArray(nums,n); //TC:O(n*n)
+        return usingArray(nums,n); //TC:O(n*n)
     }
 
     public int usingArray(int[] nums,int n){

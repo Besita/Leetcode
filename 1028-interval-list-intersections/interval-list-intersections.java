@@ -11,12 +11,10 @@ class Solution {
                 int right=Math.min(firstList[i][1],secondList[j][1]);
                 ans.add(new int[]{left,right});
             }
-            if(firstList[i][1]<secondList[j][1]){
+            if(firstList[i][1]<secondList[j][1])
                 i++;
-            }
-            else{
+            else
                 j++;
-            }
         }
         return ans.toArray(new int[ans.size()][]);
     }

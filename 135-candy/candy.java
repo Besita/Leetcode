@@ -44,7 +44,7 @@ class Solution {
         return mincandy;
     }
     public int candy(int[] ratings) {
-        //return optimized(ratings);
-        return bruteforce(ratings);
+        return optimized(ratings);
+        //return bruteforce(ratings);
     }
 }

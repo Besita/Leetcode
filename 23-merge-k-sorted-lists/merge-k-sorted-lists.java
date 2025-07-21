@@ -105,8 +105,8 @@ class Solution {
         if(k==1)    return lists[0];
 
         ///return usingmergesort(lists); //memeory limit exceeded
-        //return usingsorting(lists);
-        return usingArrays(lists);
+        return usingsorting(lists);
+        //return usingArrays(lists); //46ms
         
     }
 }

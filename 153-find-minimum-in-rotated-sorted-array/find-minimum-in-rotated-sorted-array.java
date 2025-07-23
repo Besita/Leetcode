@@ -10,14 +10,13 @@ class Solution {
         int right=n-1;
         while(left<=right){
             int mid=(left+right)/2;
-            if(mid-1>=0 && nums[mid-1]>nums[mid])
+            if(mid-1>=0 && nums[mid-1]>nums[mid])  //if prev elem is greater then that is the smallest because always prev eleemtn less than curr in sorted array
                 return nums[mid];
-            else if(nums[mid]>nums[right]){ //min is in right half
+            else if(nums[mid]>nums[right]) //min is in right half
                 left=mid+1;
-            }
             else
                 right=mid-1;  //min is in left half
         }
-        return -1;
+        return nums[left];
     }
 }

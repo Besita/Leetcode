@@ -10,16 +10,16 @@ public:
         for(int i=0;i<n;i++){
             totalsum+=nums[i];
             mincurrsum+=nums[i];
-            minsum=min(mincurrsum,minsum);
+            minsum=min(minsum,mincurrsum);
             if(mincurrsum>0)
                 mincurrsum=0;
 
-            maxcurrsum+=nums[i];           
-            maxsum=max(maxcurrsum,maxsum);
+            maxcurrsum+=nums[i];
+            maxsum=max(maxsum,maxcurrsum);
             if(maxcurrsum<0)
                 maxcurrsum=0;
         }
-
+       
         if(totalsum==minsum)//corner case, all elements are negative, return maxsubarray
             return maxsum;
         return max(maxsum,totalsum-minsum);

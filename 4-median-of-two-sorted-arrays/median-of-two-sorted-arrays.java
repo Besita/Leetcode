@@ -25,9 +25,9 @@ class Solution {
             if(mid1<m)                
                 r1=nums1[mid1];
             
-            System.out.println(mid2-1);
+           // System.out.println(mid2-1);
             if(mid2-1>=0){ 
-                System.out.println(nums2[mid2-1]);
+                //System.out.println(nums2[mid2-1]);
                 l2=nums2[mid2-1];
             }
             if(mid2<n)
@@ -68,7 +68,7 @@ class Solution {
             int r1=(mid1==m)?nums1[mid1]:Integer.MAX_VALUE;
 
             System.out.println(mid2-1);
-            int l2=(mid2==0 && mid2-1<n)?nums2[mid2-1]:Integer.MIN_VALUE;
+            int l2=(mid2==0)?nums2[mid2-1]:Integer.MIN_VALUE;
             int r2=(mid2==n)?nums2[mid2]:Integer.MAX_VALUE;
 
             if(l1<=r2 && l2<=r1){

@@ -73,7 +73,7 @@ class Solution {
     }
     public int lengthOfLongestSubstring(String s) {
         //return hashmap(s);
-        //return hashset(s);
-        return usingarray(s);
+        return hashset(s);
+        //return usingarray(s); //2ms
     }
 }

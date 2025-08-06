@@ -132,8 +132,8 @@ class Solution {
     }
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         
-        //return optimised(nums1,nums2);   //1ms
-        return method2(nums1,nums2);  //2ms 
+        return optimised(nums1,nums2);   //1ms
+        //return method2(nums1,nums2);  //1ms beats 100% 
         //return bruteforce(nums1,nums2);   //2ms
 
         

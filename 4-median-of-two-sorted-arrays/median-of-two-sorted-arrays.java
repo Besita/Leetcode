@@ -98,13 +98,8 @@ class Solution {
             return (ans/2.0);
         return ans;
     }
-    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        
-        //return method1(nums1,nums2);   //1ms
-        return method2(nums1,nums2);  
-        
-
-        /*//TC: O(n+m) SC: O(1)
+    public double bruteforce(int[] nums1, int[] nums2) {
+        //TC: O(n+m) SC: O(1)
         int m=nums1.length;
         int n=nums2.length;
         int arr1pointer=0;
@@ -136,6 +131,14 @@ class Solution {
             int mid=sz/2;
             median=ans[mid];
         }
-        return median;*/
+        return median;
+    }
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        
+        //return method1(nums1,nums2);   //1ms
+        //return method2(nums1,nums2);  //2ms 
+        return bruteforce(nums1,nums2);       
+
+        
     }
 }

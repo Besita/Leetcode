@@ -15,22 +15,22 @@ class Solution {
     public String longestPalindrome(String s) {
 
         int n=s.length();
-        if(n==1)
+        /*if(n==1)
             return s;
-        String ans=s.substring(0,1);
+        String ans=s.substring(0,1);*/
+        String ans="";
         for(int i=1;i<n;i++){
             String palinodd=maxpalindromelength(s,i,i,n);
             String palineven=maxpalindromelength(s,i-1,i,n);
-            //System.out.println(palinodd+","+palineven);
+            System.out.println(palinodd+","+palineven);
             if(palinodd.length()>ans.length())
                 ans=palinodd;
-            else if(palineven.length()>ans.length())
+            if(palineven.length()>ans.length())
                 ans=palineven;
         }
+        if(ans.length()==0)
+            ans=s.substring(0,1);
         return ans;
-        //if(max_len==1)  
-        //    return s.substring(0,0);
-       // return (ans=="")?s.substring(0,1):ans;
     }
     
 }

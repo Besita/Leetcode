@@ -22,7 +22,7 @@ class Solution {
         for(int i=1;i<n;i++){
             String palinodd=maxpalindromelength(s,i,i,n);
             String palineven=maxpalindromelength(s,i-1,i,n);
-            System.out.println(palinodd+","+palineven);
+            //System.out.println(palinodd+","+palineven);
             if(palinodd.length()>ans.length())
                 ans=palinodd;
             if(palineven.length()>ans.length())

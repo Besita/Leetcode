@@ -64,12 +64,12 @@ class Solution {
             mid1=(low+high)/2;
             mid2=((tot+1)/2)-mid1;
 
-            int l1=(mid1-1>=0)?nums1[mid1-1]:Integer.MIN_VALUE;
-            int r1=(mid1<m)?nums1[mid1]:Integer.MAX_VALUE;
+            int l1=(mid1==0)?nums1[mid1-1]:Integer.MIN_VALUE;
+            int r1=(mid1==m)?nums1[mid1]:Integer.MAX_VALUE;
 
             System.out.println(mid2-1);
-            int l2=(mid2-1>=0 && mid2-1<n)?nums2[mid2-1]:Integer.MIN_VALUE;
-            int r2=(mid2<n)?nums2[mid2]:Integer.MAX_VALUE;
+            int l2=(mid2==0 && mid2-1<n)?nums2[mid2-1]:Integer.MIN_VALUE;
+            int r2=(mid2==n)?nums2[mid2]:Integer.MAX_VALUE;
 
             if(l1<=r2 && l2<=r1){
                 int l=Math.max(l1,l2);

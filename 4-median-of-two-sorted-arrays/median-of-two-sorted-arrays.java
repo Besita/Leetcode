@@ -1,58 +1,11 @@
 class Solution {
+    
     public double optimised(int[] nums1, int[] nums2) {
-        int m=nums1.length;
-        int n=nums2.length;
-        int sz=m+n;
-        if(m>n)
-            return optimised(nums2,nums1);
-        
-        int low=0;
-        int high=m;
-        int l1,l2,r1,r2;
-        while(low<=high){
-
-            int mid1=(low+high)/2;
-            int mid2=((sz+1)/2)-mid1;
-
-            l1=Integer.MIN_VALUE;
-            l2=Integer.MIN_VALUE;
-            r1=Integer.MAX_VALUE;
-            r2=Integer.MAX_VALUE;
-
-            
-            if(mid1-1>=0)
-                l1=nums1[mid1-1];
-            if(mid1<m)                
-                r1=nums1[mid1];
-            
-            if(mid2-1>=0){ 
-                l2=nums2[mid2-1];
-            }
-            if(mid2<n)
-                r2=nums2[mid2];
-
-            if(l1<=r2 && l2<=r1){ 
-                int l=Math.max(l1,l2);
-                int r=Math.min(r1,r2);
-                 if(sz%2==0)
-                    return (l+r)/2.0;
-                else
-                    return l;
-            }
-            else if(l1>r2)
-                high=mid1-1;
-            else
-                low=mid1+1;
-
-        }
-        return 0;
-    }
-    public double method3(int[] nums1, int[] nums2) {
         int m=nums1.length;
         int n=nums2.length;
         int tot=n+m;
         if(m>n)
-            return method3(nums2,nums1);  //always choose low high mid with lesser array size
+            return optimised(nums2,nums1);  //always choose low high mid with lesser array size
         
         int low=0;
         int high=m;
@@ -170,8 +123,8 @@ class Solution {
     }
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         
-        //return optimised(nums1,nums2);   //1ms beats 100%
-        return method3(nums1,nums2);  //1ms beats 100% 
+        return optimised(nums1,nums2);   //1ms beats 100%
+        //return method2(nums1,nums2);  //1ms beats 100% 
         //return bruteforce(nums1,nums2);   //2ms        
     }
 }

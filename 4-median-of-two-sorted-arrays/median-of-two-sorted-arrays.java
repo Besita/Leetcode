@@ -1,0 +1,141 @@
+class Solution {
+    public double method1(int[] nums1, int[] nums2) {
+        int m=nums1.length;
+        int n=nums2.length;
+        int sz=m+n;
+        if(m>n)
+            return findMedianSortedArrays(nums2,nums1);
+        
+        int low=0;
+        int high=m;
+        int l1,l2,r1,r2;
+        while(low<=high){
+
+            int mid1=(low+(high-1)+1)/2;
+            int mid2=((sz+1)/2)-mid1;
+
+            l1=Integer.MIN_VALUE;
+            l2=Integer.MIN_VALUE;
+            r1=Integer.MAX_VALUE;
+            r2=Integer.MAX_VALUE;
+
+            
+            if(mid1-1>=0)
+                l1=nums1[mid1-1];
+            if(mid1<m)                
+                r1=nums1[mid1];
+            
+            if(mid2-1>=0)
+                l2=nums2[mid2-1];
+            if(mid2<n)
+                r2=nums2[mid2];
+
+            if(l1<=r2 && l2<=r1){ 
+                int l=Math.max(l1,l2);
+                int r=Math.min(r1,r2);
+                if(sz%2==0)
+                    return (l+r)/2.0;
+                else
+                    return l;
+            }
+            else if(l1>r2)
+                high=mid1-1;
+            else
+                low=mid1+1;
+
+        }
+        return 0;
+    }
+    public double method2(int[] nums1, int[] nums2) {
+        int m=nums1.length;
+        int n=nums2.length;
+        int arr1pointer=0;
+        int arr2pointer=0;
+
+        int sz=m+n;
+        double median;
+        int mid=sz/2;
+        int odd=0; //if even median=(mid+(mid-1))/2
+        if(sz%2==1){
+            odd=1;
+        }
+
+        int anspointer=0;
+        double ans=0.0;
+        double curr=0.0;
+        while(arr1pointer<m && arr2pointer<n){
+            
+            if(nums1[arr1pointer]<=nums2[arr2pointer]){
+                curr=nums1[arr1pointer++];
+            }
+            else{
+                curr=nums2[arr2pointer++];
+            }            
+            if((anspointer==mid || anspointer==mid-1 ) && odd==0)
+                ans+=curr;
+            else if(odd==1 && anspointer==mid)
+                ans+=curr;
+            anspointer++;
+        }
+        while(arr1pointer<m){
+            curr=nums1[arr1pointer++];
+            if((anspointer==mid || anspointer==mid-1 ) && odd==0)
+                ans+=curr;
+            else if(odd==1 && anspointer==mid)
+                ans+=curr;
+            anspointer++;
+        }
+        while(arr2pointer<n){
+            curr=nums2[arr2pointer++];
+            if((anspointer==mid || anspointer==mid-1 ) && odd==0)
+                ans+=curr;
+            else if(odd==1 && anspointer==mid)
+                ans+=curr;
+            anspointer++;
+        }
+
+        if(odd==0)
+            return (ans/2.0);
+        return ans;
+    }
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        
+        return method1(nums1,nums2);
+        //return method2(nums1,nums2);
+        
+
+        /*//TC: O(n+m) SC: O(1)
+        int m=nums1.length;
+        int n=nums2.length;
+        int arr1pointer=0;
+        int arr2pointer=0;
+        int[] ans=new int[m+n];
+        int anspointer=0;
+        while(arr1pointer<m && arr2pointer<n){
+            if(nums1[arr1pointer]<=nums2[arr2pointer]){
+                ans[anspointer++]=nums1[arr1pointer++];
+            }
+            else{
+                ans[anspointer++]=nums2[arr2pointer++];
+            }
+        }
+        while(arr1pointer<m){
+            ans[anspointer++]=nums1[arr1pointer++];
+        }
+        while(arr2pointer<n){
+            ans[anspointer++]=nums2[arr2pointer++];
+        }
+
+        int sz=m+n;
+        double median;
+
+        if(sz%2==0){
+            int mid=sz/2;
+            median=(ans[mid]+ans[mid-1])/2.0;
+        }else{
+            int mid=sz/2;
+            median=ans[mid];
+        }
+        return median;*/
+    }
+}

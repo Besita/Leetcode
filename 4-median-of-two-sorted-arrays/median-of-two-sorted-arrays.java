@@ -100,8 +100,8 @@ class Solution {
     }
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         
-        return method1(nums1,nums2);
-        //return method2(nums1,nums2);
+        //return method1(nums1,nums2);   //1ms
+        return method2(nums1,nums2);  
         
 
         /*//TC: O(n+m) SC: O(1)

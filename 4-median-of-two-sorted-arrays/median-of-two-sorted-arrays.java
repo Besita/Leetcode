@@ -1,10 +1,10 @@
 class Solution {
-    public double method1(int[] nums1, int[] nums2) {
+    public double optimised(int[] nums1, int[] nums2) {
         int m=nums1.length;
         int n=nums2.length;
         int sz=m+n;
         if(m>n)
-            return findMedianSortedArrays(nums2,nums1);
+            return optimised(nums2,nums1);
         
         int low=0;
         int high=m;
@@ -63,39 +63,36 @@ class Solution {
         int anspointer=0;
         double ans=0.0;
         double curr=0.0;
-        while(arr1pointer<m && arr2pointer<n){
-            
+        double prev=0.0;
+        int cnt=0;
+        while(arr1pointer<m && arr2pointer<n && cnt<=mid){
+            prev=curr;
             if(nums1[arr1pointer]<=nums2[arr2pointer]){
                 curr=nums1[arr1pointer++];
             }
             else{
                 curr=nums2[arr2pointer++];
             }            
-            if((anspointer==mid || anspointer==mid-1 ) && odd==0)
-                ans+=curr;
-            else if(odd==1 && anspointer==mid)
-                ans+=curr;
+            cnt++;
             anspointer++;
         }
-        while(arr1pointer<m){
+        while(arr1pointer<m && cnt<=mid){
+            prev=curr;
             curr=nums1[arr1pointer++];
-            if((anspointer==mid || anspointer==mid-1 ) && odd==0)
-                ans+=curr;
-            else if(odd==1 && anspointer==mid)
-                ans+=curr;
+            cnt++;
             anspointer++;
         }
-        while(arr2pointer<n){
-            curr=nums2[arr2pointer++];
-            if((anspointer==mid || anspointer==mid-1 ) && odd==0)
-                ans+=curr;
-            else if(odd==1 && anspointer==mid)
-                ans+=curr;
+        while(arr2pointer<n && cnt<=mid){
+            prev=curr;
+            curr=nums2[arr2pointer++];        
+            cnt++;   
             anspointer++;
         }
-
         if(odd==0)
-            return (ans/2.0);
+            ans=(curr+prev)/2;
+        else if(odd==1)
+            ans=curr;
+
         return ans;
     }
     public double bruteforce(int[] nums1, int[] nums2) {
@@ -135,9 +132,9 @@ class Solution {
     }
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         
-        //return method1(nums1,nums2);   //1ms
-        //return method2(nums1,nums2);  //2ms 
-        return bruteforce(nums1,nums2);       
+        //return optimised(nums1,nums2);   //1ms
+        return method2(nums1,nums2);  //2ms 
+        //return bruteforce(nums1,nums2);   //2ms
 
         
     }

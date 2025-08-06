@@ -60,8 +60,6 @@ class Solution {
         int high=m;
         int mid1,mid2;
         double ans=0;
-        if(tot==0)
-            return 0;
         while(low<=high){
             mid1=(low+high)/2;
             mid2=((tot+1)/2)-mid1;

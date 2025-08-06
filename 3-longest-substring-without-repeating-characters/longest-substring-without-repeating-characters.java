@@ -72,8 +72,8 @@ class Solution {
         return maxlen;
     }
     public int lengthOfLongestSubstring(String s) {
-        //return hashmap(s);
-        return hashset(s);
+        return hashmap(s);
+        //return hashset(s); //4ms
         //return usingarray(s); //2ms
     }
 }

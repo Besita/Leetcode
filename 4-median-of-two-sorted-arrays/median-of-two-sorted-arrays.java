@@ -25,9 +25,7 @@ class Solution {
             if(mid1<m)                
                 r1=nums1[mid1];
             
-           // System.out.println(mid2-1);
             if(mid2-1>=0){ 
-                //System.out.println(nums2[mid2-1]);
                 l2=nums2[mid2-1];
             }
             if(mid2<n)
@@ -53,8 +51,8 @@ class Solution {
         int m=nums1.length;
         int n=nums2.length;
         int tot=n+m;
-        if(m<n)
-            return method3(nums2,nums1);  //always choose low high mid with bigger array size
+        if(m>n)
+            return method3(nums2,nums1);  //always choose low high mid with lesser array size
         
         int low=0;
         int high=m;
@@ -64,12 +62,11 @@ class Solution {
             mid1=(low+high)/2;
             mid2=((tot+1)/2)-mid1;
 
-            int l1=(mid1==0)?nums1[mid1-1]:Integer.MIN_VALUE;
-            int r1=(mid1==m)?nums1[mid1]:Integer.MAX_VALUE;
-
-            System.out.println(mid2-1);
-            int l2=(mid2==0)?nums2[mid2-1]:Integer.MIN_VALUE;
-            int r2=(mid2==n)?nums2[mid2]:Integer.MAX_VALUE;
+            int l1=(mid1-1>=0)?nums1[mid1-1]:Integer.MIN_VALUE;
+            int r1=(mid1<m)?nums1[mid1]:Integer.MAX_VALUE;
+            
+            int l2=(mid2-1>=0)?nums2[mid2-1]:Integer.MIN_VALUE;
+            int r2=(mid2<n)?nums2[mid2]:Integer.MAX_VALUE;
 
             if(l1<=r2 && l2<=r1){
                 int l=Math.max(l1,l2);
@@ -173,8 +170,8 @@ class Solution {
     }
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         
-        return optimised(nums1,nums2);   //1ms beats 100%
-        //return method3(nums1,nums2);  //1ms beats 100% 
+        //return optimised(nums1,nums2);   //1ms beats 100%
+        return method3(nums1,nums2);  //1ms beats 100% 
         //return bruteforce(nums1,nums2);   //2ms        
     }
 }

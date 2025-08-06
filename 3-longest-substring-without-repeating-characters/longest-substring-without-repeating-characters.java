@@ -55,7 +55,7 @@ class Solution {
         int n=s.length();
         if(n==0)
             return 0;        
-        while(right<n && left<n){
+        while(right<n){
             if(arr[s.charAt(right)]==0){
                 arr[s.charAt(right)]=1;
                 maxlen=Math.max(maxlen,right-left+1);
@@ -72,8 +72,8 @@ class Solution {
         return maxlen;
     }
     public int lengthOfLongestSubstring(String s) {
-        return hashmap(s);
+        //return hashmap(s);
         //return hashset(s);
-        //return usingarray(s);
+        return usingarray(s);
     }
 }

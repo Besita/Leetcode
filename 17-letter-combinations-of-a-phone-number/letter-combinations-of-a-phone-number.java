@@ -7,13 +7,12 @@ class Solution {
 
         int index=digits.charAt(idx)-'0';
         String curr=letters[index];
-        System.out.println(curr);
         for(int i=0;i<curr.length();i++){
             temp.append(curr.charAt(i));
-            System.out.println(temp);
+            //System.out.println(temp);
             backtrack(idx+1,n,ans,temp,letters,digits);
             temp.deleteCharAt(temp.length()-1);
-            System.out.println(temp);
+            //System.out.println(temp);
         }
     }
     public List<String> letterCombinations(String digits) {

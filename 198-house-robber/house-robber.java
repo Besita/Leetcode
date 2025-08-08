@@ -22,23 +22,8 @@ class Solution {
         int notpick=memoization(n-1,nums,dp);
         return dp[n]=Math.max(pick,notpick);
     }
+    
     public int tabulation(int[] nums){
-        int n=nums.length;
-        int[] dp=new int[n+1];
-        for(int i=0;i<=n;i++)
-            dp[i]=-1;
-        dp[0]=nums[0];
-        for(int i=1;i<=n;i++){
-            int pick=nums[i],notpick=0;
-            if((i-2)>=0)
-                pick+=dp[i-2];
-            if((i-1)>=0)
-                notpick=dp[i-1];
-            dp[i]=Math.max(pick,notpick);
-        }
-        return dp[n];
-    }
-    public int revision(int[] nums){
         int n=nums.length;
         int maxval=0;
         if(n==1)
@@ -57,7 +42,7 @@ class Solution {
     }
     public int rob(int[] nums) {
         int n=nums.length-1;
-        return revision(nums);
+    
         //return recursion(n,nums);
         /*//memoization
         int[] dp=new int[n+1];
@@ -67,7 +52,7 @@ class Solution {
         return memoization(n,nums,dp);*/
 
         //tabulation
-        //return tabulation(nums);
+        return tabulation(nums);
 
         /*//space optimised
         int prev1=nums[0];

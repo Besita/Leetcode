@@ -18,7 +18,7 @@ class Solution {
         }
         return length;
     }
-    public ListNode removeNthFromEnd(ListNode head, int n) {
+    public ListNode twopass(ListNode head,int n){
         int length=findLength(head);
         int todelete=length-n;
         if(todelete==0)
@@ -33,6 +33,26 @@ class Solution {
             }
             curr=curr.next;
         }
+        return head; 
+    }
+    public ListNode onepass(ListNode head,int n){
+        ListNode fast=head;
+        ListNode slow=head;
+        for(int i=0;i<n;i++)
+            fast=fast.next;
+
+        if(fast==null)  //first element
+            return head.next;
+        while(fast!=null && fast.next!=null){ //middle elements
+            slow=slow.next;
+            fast=fast.next;
+        }
+        slow.next=slow.next.next;
         return head;
+    }
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        //ListNode twopass(head,n); //0ms
+        return onepass(head,n);
+       
     }
 }

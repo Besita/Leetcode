@@ -23,7 +23,7 @@ class Solution {
         }
         return true;
     }
-    public boolean isPalindrome(ListNode head) {
+    public boolean usingarray(ListNode head){
         ListNode curr=head;
         List<Integer> arr=new ArrayList<>();
         while(curr!=null){
@@ -31,5 +31,9 @@ class Solution {
             curr=curr.next;
         }
         return ispalindrome(arr);
+    }
+    public boolean isPalindrome(ListNode head) {
+        return usingarray(head);
+        
     }
 }

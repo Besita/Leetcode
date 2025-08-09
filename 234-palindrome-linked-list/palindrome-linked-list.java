@@ -32,8 +32,38 @@ class Solution {
         }
         return ispalindrome(arr);
     }
+    public boolean usingReverse(ListNode head){
+        ListNode slow=head;
+        ListNode fast=head;
+        ListNode prev=head;
+        //find middle element if even mid element is second mid
+        while(fast!=null && fast.next!=null){
+            fast=fast.next.next;
+            prev=slow;
+            slow=slow.next;
+        }
+        prev.next=null;
+        //reverse the second half
+        ListNode rev=null;        
+        while(slow!=null){
+            ListNode nextt=slow.next;
+            slow.next=rev;
+            rev=slow;
+            slow=nextt;
+        }
+        //check whether they are equal
+        while(rev!=null && head!=null){
+            if(rev.val==head.val){
+                rev=rev.next;
+                head=head.next;
+            }else{
+                return false;
+            }
+        }
+        return true;
+    }
     public boolean isPalindrome(ListNode head) {
-        return usingarray(head);
-        
+        //return usingarray(head);
+        return usingReverse(head);       
     }
 }

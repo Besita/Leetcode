@@ -4,12 +4,10 @@ class Solution {
             ans.add(new ArrayList<>(temp));
             return;
         }        
-
         temp.add(nums[idx]);
         backtrack(idx+1,n,nums,temp,ans);
         temp.remove(temp.size()-1);
-        backtrack(idx+1,n,nums,temp,ans);
-        
+        backtrack(idx+1,n,nums,temp,ans);        
     }
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> ans=new ArrayList<>();

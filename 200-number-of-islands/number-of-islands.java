@@ -1,34 +1,34 @@
 class Solution {
-    public void dfs(int row,int col,int n,int m,int[][] vis,char[][] grid){
-        if(vis[row][col]==1 || grid[row][col]=='0')
+    public void dfs(int row,int col,int n,int m,char[][] grid){
+        if(grid[row][col]=='2' || grid[row][col]=='0')
             return;
         
-        vis[row][col]=1;
+        grid[row][col]='2';
 
         if(row-1>=0)
-            dfs(row-1,col,n,m,vis,grid);
+            dfs(row-1,col,n,m,grid);
         if(col-1>=0)
-            dfs(row,col-1,n,m,vis,grid);
+            dfs(row,col-1,n,m,grid);
         if(row+1<n)
-            dfs(row+1,col,n,m,vis,grid);
+            dfs(row+1,col,n,m,grid);
         if(col+1<m)
-            dfs(row,col+1,n,m,vis,grid);
+            dfs(row,col+1,n,m,grid);
 
     }
     public int numIslands(char[][] grid) {
         int n=grid.length;
         int m=grid[0].length;
-        int[][] vis=new int[n][m];
+        /*int[][] vis=new int[n][m];
         for(int i=0;i<n;i++)
-            Arrays.fill(vis[i],0);
+            Arrays.fill(vis[i],0);*/
 
         int islandCount=0;
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
-                if(grid[i][j]=='1' && vis[i][j]==0){ 
-                    System.out.println(grid[i][j]+" "+vis[i][j]);
+                if(grid[i][j]=='1'){ 
+                    //System.out.println(grid[i][j]+" "+vis[i][j]);
                     islandCount++;
-                    dfs(i,j,n,m,vis,grid);
+                    dfs(i,j,n,m,grid);
                 }
             }
         }

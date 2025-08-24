@@ -25,6 +25,8 @@ class Solution {
         }
         return battleships;
     }
+   // board[i][j]=='X' && (i==n-1 || board[i+1][j]=='.') 
+     ///               && (j==m-1 || board[i][j+1]=='.'))
     public int method2(char[][] board){
         int n=board.length;
         int m=board[0].length;
@@ -33,8 +35,8 @@ class Solution {
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
                 if(board[i][j]=='X' 
-                    && (i==n-1 || board[i+1][j]=='.') 
-                    && (j==m-1 || board[i][j+1]=='.'))
+                    && ((i+1<n && board[i+1][j]=='.') || i==n-1)
+                    && ((j+1<m && board[i][j+1]=='.') || j==m-1))
                         battleships++;
             }        
         }

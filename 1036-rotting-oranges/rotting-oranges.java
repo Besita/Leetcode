@@ -16,12 +16,16 @@ class Solution {
         int[] dy={0,0,-1,1};
         
         int Time=0;
+        int fresh=0;
+        int rotten=0;
         Queue<pair> q=new LinkedList<>();
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
                 if(grid[i][j]==2)
                     q.add(new pair(i,j,0));
-                    System.out.println(i+" "+j+" "+0);
+
+                if(grid[i][j]==1)
+                    fresh++;
             }
         }
 
@@ -38,16 +42,13 @@ class Solution {
                 if(grid[row+dx[i]][col+dy[i]]==1){ 
                     grid[row+dx[i]][col+dy[i]]=2;
                     q.add(new pair(row+dx[i],col+dy[i],min+1));
-                   // System.out.println((row+dx[i])+" "+(col+dy[i])+" "+(min+1));
+                    rotten++;
                 }
             }
         }
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                if(grid[i][j]==1)
-                    return -1;
-            }
-        }
+        if(fresh!=rotten)
+            return -1;
+
         return Time;
     }
 }

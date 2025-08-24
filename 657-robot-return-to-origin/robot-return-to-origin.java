@@ -10,9 +10,8 @@ class Solution {
             else if(moves.charAt(i)=='U')
                 originr--;
             else
-                originr++;
+                originr++;  
         }
         return (originr==0 && originc==0);
-
     }
 }

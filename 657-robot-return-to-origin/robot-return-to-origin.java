@@ -12,8 +12,7 @@ class Solution {
             else
                 originr++;
         }
-        if(originr==0 && originc==0)
-            return true;
-        return false;
+        return (originr==0 && originc==0);
+
     }
 }

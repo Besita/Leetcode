@@ -7,13 +7,13 @@ class Solution {
         board[row][col]='B';
 
         //System.out.println(row+" "+col);
-        if(row-1>=0)
+        //if(row-1>=0)
             dfs(row-1,col,m,n,board,vis);
-        if(row+1<m)
+        //if(row+1<m)
             dfs(row+1,col,m,n,board,vis);
-        if(col+1<n)
+        //if(col+1<n)
             dfs(row,col+1,m,n,board,vis);
-        if(col-1>=0)
+        //if(col-1>=0)
             dfs(row,col-1,m,n,board,vis);       
 
     }

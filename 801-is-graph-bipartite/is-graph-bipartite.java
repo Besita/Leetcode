@@ -40,10 +40,10 @@ class Solution {
 
         for(int i=0;i<n;i++){
             if(color[i]==-1){ 
-                /*if(!bfs(i,n,graph,color))
-                    return false;*/
-                if(!dfs(i,-1,n,graph,color))
+                if(!bfs(i,n,graph,color))
                     return false;
+                /*if(!dfs(i,-1,n,graph,color))
+                    return false;*/
             }
         }
         return true;

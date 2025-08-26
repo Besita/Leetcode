@@ -10,10 +10,26 @@ class Solution {
                     color[next]=1-color[curr];
                     q.add(next);
                 }
-                else if(color[next]==color[curr])
+                if(color[next]==color[curr])
                     return false;
             }
 
+        }
+        return true;
+    }
+    public boolean dfs(int node,int prev,int n,int[][] graph,int[] color){
+        if(prev==-1)
+            color[node]=0;
+        else
+            color[node]=1-color[prev];
+
+        for(int next:graph[node]){
+            if(color[next]==-1){ 
+                if(!dfs(next,node,n,graph,color))
+                    return false;
+            }
+            if(color[next]==color[node])
+                return false;
         }
         return true;
     }
@@ -24,7 +40,9 @@ class Solution {
 
         for(int i=0;i<n;i++){
             if(color[i]==-1){ 
-                if(!bfs(i,n,graph,color))
+                /*if(!bfs(i,n,graph,color))
+                    return false;*/
+                if(!dfs(i,-1,n,graph,color))
                     return false;
             }
         }

@@ -1,7 +1,6 @@
 class Solution {
     public boolean dfs(int node,int V,int[] vis,int[] pathvis,int[][] graph,int[] safe){
         if(pathvis[node]==1){ 
-            //safe[node]=0;
             return true;
         }
         if(vis[node]==1)
@@ -30,7 +29,8 @@ class Solution {
             }
         }
         for(int i=0;i<V;i++){
-            if(safe[i]==1)
+            //if(safe[i]==1)
+            if(vis[i]==1 && pathvis[i]==0)
                 ans.add(i);
         }
         return ans;

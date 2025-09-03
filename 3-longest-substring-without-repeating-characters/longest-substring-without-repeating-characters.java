@@ -119,11 +119,9 @@ class Solution {
                    arr[s.charAt(left)]=0;
                    left++;
                 }
-                int idx=arr[s.charAt(right)];
-                arr[s.charAt(right)]=right+1;
-                left=idx;
+                left++;
             }
-            System.out.println(left+" "+right+" "+maxlen);
+            //System.out.println(left+" "+right+" "+maxlen);
         }
         return maxlen;
     }

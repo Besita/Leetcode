@@ -96,9 +96,41 @@ class Solution {
         }
         return maxlen;
     }
+
+
+
+
+
+
+    public int usingarray2(String s){
+        int[] arr=new int[128];
+        int n=s.length();
+        if(n<=1)
+            return n;
+        int maxlen=0;
+        int left=0;
+        for(int right=0;right<n;right++){
+            if(arr[s.charAt(right)]==0){
+                arr[s.charAt(right)]=right+1;
+                maxlen=Math.max(maxlen,right-left+1);
+            }
+            else{
+                while(arr[s.charAt(left)]!=arr[s.charAt(right)]){ 
+                   arr[s.charAt(left)]=0;
+                   left++;
+                }
+                int idx=arr[s.charAt(right)];
+                arr[s.charAt(right)]=right+1;
+                left=idx;
+            }
+            System.out.println(left+" "+right+" "+maxlen);
+        }
+        return maxlen;
+    }
+
     public int lengthOfLongestSubstring(String s) {
         //return hashmap(s); //5ms
         //return hashset(s); //4ms
-        return usingarray1(s); //2ms
+        return usingarray2(s); //2ms
     }
 }

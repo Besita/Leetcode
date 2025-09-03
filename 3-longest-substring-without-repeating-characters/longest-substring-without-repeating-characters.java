@@ -80,7 +80,6 @@ class Solution {
             return 0;
         int maxlen=1;
         int[] isunique=new int[128];
-        Arrays.fill(isunique,0);
         for(right=0;right<n;right++){
             if(isunique[s.charAt(right)]==0){
                 isunique[s.charAt(right)]=1;
@@ -115,7 +114,7 @@ class Solution {
                 maxlen=Math.max(maxlen,right-left+1);
             }
             else{
-                while(arr[s.charAt(left)]!=arr[s.charAt(right)]){ 
+                while(s.charAt(left)!=s.charAt(right)){ 
                    arr[s.charAt(left)]=0;
                    left++;
                 }

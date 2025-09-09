@@ -20,15 +20,19 @@ class Solution {
             int l2=(m2-1>=0)?nums2[m2-1]:Integer.MIN_VALUE;
             int r2=(m2<n)?nums2[m2]:Integer.MAX_VALUE;
 
+
+             //System.out.println(l1+" "+l2+" "+r1+" "+r2);    
             if(l1<=r2 && l2<=r1){
                 double median1=Math.max(l1,l2);
                 double median2=Math.min(r1,r2);
 
-                if(tot%2==0)//tot eleemnts even 
+                //System.out.println(median1+" "+median2);    
+
+                if(tot%2==0)//tot elements even 
                     return (median1+median2)/2.0;
                 else
                     return median1;
-                //System.out.println(median1+" "+median2);                
+                            
             }
             else if(l1>r2)
                 high=m1-1;

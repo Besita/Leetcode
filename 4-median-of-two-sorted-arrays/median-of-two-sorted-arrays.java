@@ -4,38 +4,39 @@ class Solution {
         int m=nums1.length;
         int n=nums2.length;
         int tot=n+m;
-        if(m>n)
-            return optimised(nums2,nums1);  //always choose low high mid with lesser array size
-        
-        int low=0;
-        int high=m;
-        int mid1,mid2;
-        double ans=0;
-        while(low<=high){
-            mid1=(low+high)/2;
-            mid2=((tot+1)/2)-mid1;
 
-            int l1=(mid1-1>=0)?nums1[mid1-1]:Integer.MIN_VALUE;
-            int r1=(mid1<m)?nums1[mid1]:Integer.MAX_VALUE;
-            
-            int l2=(mid2-1>=0)?nums2[mid2-1]:Integer.MIN_VALUE;
-            int r2=(mid2<n)?nums2[mid2]:Integer.MAX_VALUE;
+        if(m>n)
+            return optimised(nums2,nums1);
+
+        int low=0;
+        int high=m;  //high should be m instead of m-1
+        while(low<=high){
+            int m1=(low+high)/2;
+            int m2=((tot+1)/2) - m1; //(tot+1)/2 to handle even and odd elements
+
+            int l1=(m1-1>=0)?nums1[m1-1]:Integer.MIN_VALUE;
+            int r1=(m1<m)?nums1[m1]:Integer.MAX_VALUE;
+
+            int l2=(m2-1>=0)?nums2[m2-1]:Integer.MIN_VALUE;
+            int r2=(m2<n)?nums2[m2]:Integer.MAX_VALUE;
 
             if(l1<=r2 && l2<=r1){
-                int l=Math.max(l1,l2);
-                int r=Math.min(r1,r2);
-                
-                if(tot%2==0) //if size is even
-                    return ans=(l+r)/2.0;
+                double median1=Math.max(l1,l2);
+                double median2=Math.min(r1,r2);
+
+                if(tot%2==0)//tot eleemnts even 
+                    return (median1+median2)/2.0;
                 else
-                    return ans=l;
+                    return median1;
+                //System.out.println(median1+" "+median2);                
             }
             else if(l1>r2)
-                high=mid1-1;
+                high=m1-1;
             else
-                low=mid1+1;
+                low=m1+1;
         }
-        return ans=0;
+        return 0;
+
     }
     public double method2(int[] nums1, int[] nums2) {
         int m=nums1.length;

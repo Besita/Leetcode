@@ -21,7 +21,7 @@ class Solution {
             adj[i]=new ArrayList<>();
 
         for(int[] i:edges)
-            adj[i[0]].add(i[1]);
+            adj[i[1]].add(i[0]);
 
         int[] vis=new int[numCourses];
         int[] pathvis=new int[numCourses];

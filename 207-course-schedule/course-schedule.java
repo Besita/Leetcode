@@ -15,7 +15,7 @@ class Solution {
         pathvis[node]=0;
         return true;
     }
-    public boolean canFinish(int numCourses, int[][] edges) {
+    public boolean usingDFS(int numCourses,int[][] edges){
         List<Integer>[] adj=new ArrayList[numCourses];
         for(int i=0;i<numCourses;i++)
             adj[i]=new ArrayList<>();
@@ -32,5 +32,40 @@ class Solution {
             }
         }        
         return true;
+    }
+    public boolean usingBFS(int numCourses,int[][] edges){
+        List<Integer>[] adj=new ArrayList[numCourses];
+        for(int i=0;i<numCourses;i++)
+            adj[i]=new ArrayList<>();
+
+        int[] indegree=new int[numCourses];
+        for(int[] i:edges){
+            adj[i[1]].add(i[0]);
+            indegree[i[0]]++;
+        }
+        Queue<Integer> q=new LinkedList<>();
+
+        for(int i=0;i<numCourses;i++){
+            if(indegree[i]==0){
+                q.add(i);
+            }
+        }
+        List<Integer> ans=new ArrayList<>();
+        while(!q.isEmpty()){
+            int node=q.poll();
+            for(int i:adj[node]){
+                indegree[i]--;
+                if(indegree[i]==0)
+                    q.add(i);
+            }
+            ans.add(node);
+        }
+        if(ans.size()==numCourses)
+            return true;
+        return false;
+    }
+    public boolean canFinish(int numCourses, int[][] edges) {
+        //return usingDFS(numCourses,edges);
+        return usingBFS(numCourses,edges);
     }
 }

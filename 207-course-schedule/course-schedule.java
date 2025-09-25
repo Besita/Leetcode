@@ -60,9 +60,8 @@ class Solution {
             }
             ans.add(node);
         }
-        if(ans.size()==numCourses)
-            return true;
-        return false;
+        return ans.size()==numCourses;
+
     }
     public boolean canFinish(int numCourses, int[][] edges) {
         //return usingDFS(numCourses,edges);

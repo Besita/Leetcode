@@ -30,7 +30,7 @@ class Solution {
         }
             
         int[] res=ans.stream().mapToInt(Integer::intValue).toArray();
-        if(res.length!=numCourses)
+        if(ans.size()!=numCourses)
             return new int[0];
         return res;
     }
@@ -77,7 +77,7 @@ class Solution {
         return ans;
     }
     public int[] findOrder(int numCourses, int[][] prerequisites) {
-        //return usingBFSTopoSort(numCourses,prerequisites);
-        return usingDFS(numCourses,prerequisites);
+        return usingBFSTopoSort(numCourses,prerequisites);
+        //return usingDFS(numCourses,prerequisites);
     }
 }

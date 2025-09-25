@@ -35,9 +35,45 @@ class Solution {
         }
         return ans;
     }
+    public List<Integer> usingBFSTopoSort(int[][] graph){
+        int V=graph.length;
+        int[] indegree=new int[V];
+        List<Integer>[] adj=new ArrayList[V];
+        for(int i=0;i<V;i++)
+            adj[i]=new ArrayList<>();
+
+        for(int i=0;i<V;i++){  // build adj matrix and indegree
+            for(int j=0;j<graph[i].length;j++){ 
+                adj[graph[i][j]].add(i);
+                indegree[i]++;
+            }
+        }
+        List<Integer> ans=new ArrayList<>();
+        Queue<Integer> q=new LinkedList<>(); 
+        for(int i=0;i<V;i++){
+            if(indegree[i]==0){ 
+                q.add(i);
+            }
+        }
+
+        while(!q.isEmpty()){
+            int node=q.poll();
+            ans.add(node);
+            for(int i:adj[node]){
+                indegree[i]--;
+                if(indegree[i]==0){ 
+                    q.add(i);
+                }
+            }
+        }
+        
+        Collections.sort(ans);
+        return ans;
+    }
     public List<Integer> eventualSafeNodes(int[][] graph) {
         
-        return usingDfsDAG(graph);
+        //return usingDfsDAG(graph);
+        return usingBFSTopoSort(graph);
         
     }
 }

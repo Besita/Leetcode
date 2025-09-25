@@ -1,5 +1,5 @@
 class Solution {
-    public boolean dfs(int node,int V,int[] vis,int[] pathvis,int[][] graph){
+    public boolean dfs(int node,int V,int[] vis,int[] pathvis,int[][] graph,int[] check){
         if(pathvis[node]==1){  //same path i.e cycle is present
             return true;
         }
@@ -9,10 +9,11 @@ class Solution {
         vis[node]=1;
         pathvis[node]=1;
         for(int i:graph[node]){
-            if(dfs(i,V,vis,pathvis,graph)) //if cycle return , else make pathvis==0
+            if(dfs(i,V,vis,pathvis,graph,check)) //if cycle return , else make pathvis==0
                 return true;
         }
         pathvis[node]=0;
+        check[node]=1;
         return false;
     }
 
@@ -20,15 +21,16 @@ class Solution {
         int V=graph.length;
         int[] vis=new int[V];
         int[] pathvis=new int[V];
+        int[] check=new int[V];
         List<Integer> ans=new ArrayList<>();
         
         for(int i=0;i<V;i++){
             if(vis[i]==0){
-                dfs(i,V,vis,pathvis,graph);
+                dfs(i,V,vis,pathvis,graph,check);
             }
         }
         for(int i=0;i<V;i++){
-            if(vis[i]==1 && pathvis[i]==0)
+            if(check[i]==1)
                 ans.add(i);
         }
         return ans;

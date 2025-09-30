@@ -11,7 +11,7 @@ class Solution {
         }
     }
     public int findCircleNum(int[][] isConnected) {
-        int n=isConnected.length;
+        int n=isConnected[0].length;
         int[] vis=new int[n];
         //Arrays.fill(vis,0);
 

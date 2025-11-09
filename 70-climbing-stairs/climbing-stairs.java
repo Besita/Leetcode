@@ -1,58 +1,39 @@
 class Solution {
-    int memoization(int n,int[] dp){
-        if(n<=2)
-            dp[n]=n;
-
-        if(dp[n]!=-1)
-            return dp[n];
-        
-        return dp[n]=memoization(n-1,dp)+memoization(n-2,dp);
-    }
-    int recursion(int n){
+    int memoization(int n,int[] memo){
         if(n<=2)
             return n;
-
-        return recursion(n-2)+recursion(n-1);
-
-    }
-    int tabulation(int n){
-
-        if(n<=2)
-            return n;
-            
-        int[] dp=new int[n+1];
-        //dp[0]=0;
-        dp[1]=1; 
-        dp[2]=2;
         
-        for(int i=3;i<=n;i++){
-            dp[i]=dp[i-1]+dp[i-2];
-        }
-        return dp[n];
+        if(memo[n]!=-1)
+            return memo[n];
+        
+        memo[n] = memoization(n-1,memo)+memoization(n-2,memo);
+        return memo[n];
     }
     public int climbStairs(int n) {
-        int[] dp=new int[n+1];
-        for(int i=0;i<=n;i++)
-            dp[i]=-1;
+        /*//method1
+        if(n<=2)
+            return n;
+        int[] f=new int[n+1];
+        f[1]=1;
+        f[2]=2;
+        for(int i=3;i<=n;i++)
+            f[i]=f[i-1]+f[i-2];
+        return f[n];*/
 
-        //recursion
-        //return recursion(n);
-
-        //memoization               
-        //return memoization(n,dp);
-
-        return tabulation(n);
-        //tabulation
+        /*//method2  TLE recursion
+        if(n<=2)
+            return n;
         
-
-        /*//space optimised
-        int prev2=1;
-        int prev1=1;    
-        for(int i=2;i<=n;i++){
-            int curr=prev1+prev2;
-            prev2=prev1;
-            prev1=curr;
-        }
-        return prev1;*/
+        return climbStairs(n-1)+climbStairs(n-2);*/
+        
+        //method3
+        if(n<=2)
+            return n;
+        int []memo=new int[n+1];
+        Arrays.fill(memo,-1);
+        memo[1]=1;
+        memo[2]=2;
+        return memoization(n,memo);
+        
     }
 }

@@ -8,8 +8,8 @@ class Solution {
         else if(n<0)   
             return 0;
 
-        int pick=nums[n]+recursion(nums,target,n-1,curr+nums[n]);        
-        int notpick=-nums[n]+recursion(nums,target,n-1,curr-nums[n]);
+        int pick=recursion(nums,target,n-1,curr+nums[n]);        
+        int notpick=recursion(nums,target,n-1,curr-nums[n]);
 
         return pick+notpick;
     }

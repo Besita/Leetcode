@@ -5,7 +5,7 @@ class Solution {
         for(int curr=1;curr<n;curr++){           
             if(nums[prev]!=nums[curr]){
                 nums[prev+1]=nums[curr];
-                prev=prev+1;
+                prev++;
             }
         }
         return prev+1;

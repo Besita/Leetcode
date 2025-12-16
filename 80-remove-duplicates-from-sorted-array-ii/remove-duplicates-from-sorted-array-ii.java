@@ -4,18 +4,21 @@ class Solution {
         int prev=0;
         if(n<=2)
             return n;
-        int occurence=1;
-        for(int curr=1;curr<n;curr++){
+        int start=1;
+        if(nums[prev]==nums[prev+1]){ 
+            prev++;
+            start++;
+        }
+        for(int curr=start;curr<n;curr++){
             if(nums[prev]!=nums[curr]){
                 nums[prev+1]=nums[curr];
                 prev++;
-                occurence=1;
+                if(curr+1<n && nums[curr]==nums[curr+1]){ 
+                    nums[prev+1]=nums[curr];
+                    prev++;
+                }
             }
-            else if(nums[prev]==nums[curr] && occurence==1){
-                nums[prev+1]=nums[curr];
-                prev++;
-                occurence=2;
-            }
+            
         }
         return prev+1;
     }

@@ -2,8 +2,8 @@ class Solution {
     public int removeDuplicates(int[] nums) {
         int n=nums.length;
         int prev=0;
-        //if(n<=2)
-          //  return n;
+        if(n<=2)
+            return n;
         int occurence=1;
         for(int curr=1;curr<n;curr++){
             if(nums[prev]!=nums[curr]){

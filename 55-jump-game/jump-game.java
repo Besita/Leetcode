@@ -39,7 +39,7 @@ class Solution {
         for(int i=0;i<n;i++){
             if(maxreach<i) //it means somewhere the element is 0, i.e no jumps.
                return false;
-            maxreach=Math.max(nums[i]+i,maxreach);
+            maxreach=Math.max(nums[i]+i,maxreach);            
         }
         return true;
     }

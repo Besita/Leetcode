@@ -35,8 +35,8 @@ class Solution {
         int n=nums.length;
         int maxreach=0;
         for(int i=0;i<n;i++){
-            if(i>maxreach)
-                return false;
+            if(maxreach<i)
+               return false;
             maxreach=Math.max(nums[i]+i,maxreach);
         }
         return true;
@@ -46,7 +46,7 @@ class Solution {
         //return usingdp(0,nums,n);
         int[] dp=new int[n];
         Arrays.fill(dp,-1);
-        return usingmemo(0,nums,n,dp);
-        //return optimized(nums);
+        //return usingmemo(0,nums,n,dp);
+        return optimized(nums);
     }
 }

@@ -22,9 +22,8 @@ class Solution {
             return dp[idx]==1;
 
         for(int i=1;i<=nums[idx];i++){
-            //System.out.println(idx+i);
             if(usingmemo(idx+i,nums,n,dp)==true){ 
-                dp[idx]=1;
+                dp[idx+i]=1;
                 return true;
             }
         }

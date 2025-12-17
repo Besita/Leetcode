@@ -14,7 +14,6 @@ class Solution {
         while(high<n-1){
             maxreach=0;
             for(int i=low;i<=high;i++){
-                System.out.println(low+" "+high);
                 maxreach=Math.max(maxreach,i+nums[i]);
             }
             low=high+1;

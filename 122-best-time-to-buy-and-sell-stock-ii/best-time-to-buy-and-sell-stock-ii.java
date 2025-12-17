@@ -4,12 +4,10 @@ class Solution {
         int Profit=0;
         int currMin=prices[0];
         for(int i=0;i<n;i++){
-            if(prices[i]>currMin){ 
+            if(prices[i]>currMin)
                 Profit+=prices[i]-currMin;
-                currMin=prices[i];
-            }
-            else
-                currMin=prices[i];
+                
+            currMin=prices[i];
             
         }
         return Profit;

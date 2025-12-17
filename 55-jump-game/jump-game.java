@@ -34,8 +34,10 @@ class Solution {
     public boolean optimized(int[] nums){
         int n=nums.length;
         int maxreach=0;
+        //if there is a zero element in between and all jumps from before end up in that index, then we cant reach the end
+        //therefore condition to check is: the maxjump from that index should be greater than the index
         for(int i=0;i<n;i++){
-            if(maxreach<i)
+            if(maxreach<i) //it means somewhere the element is 0, i.e no jumps.
                return false;
             maxreach=Math.max(nums[i]+i,maxreach);
         }

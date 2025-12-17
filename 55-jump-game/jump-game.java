@@ -1,15 +1,37 @@
 class Solution {
-    public boolean usingdp(int[] nums){
-        int n=nums.length;
-        boolean[] dp=new boolean[n];
-        dp[n-1]=true;
-        for(int i=n-2;i>=0;i--){
-            for(int j=i+1;j<=i+nums[i] && j<n;j++){
-                dp[i]=dp[i] || dp[j];
+    public boolean usingdp(int idx,int[] nums,int n){
+        if(idx==n-1)
+            return true;
+        if(idx>=n || nums[idx]==0)
+            return false;
+
+        for(int i=1;i<=nums[idx];i++){
+            //System.out.println(idx+i);
+            if(usingdp(idx+i,nums,n)==true)
+                return true;
+        }
+        return false;
+    }
+    
+    public boolean usingmemo(int idx,int[] nums,int n,int[] dp){
+        if(idx==n-1)
+            return true;
+        if(idx>=n || nums[idx]==0)
+            return false;
+        if(dp[idx]!=-1)
+            return dp[idx]==1;
+
+        for(int i=1;i<=nums[idx];i++){
+            //System.out.println(idx+i);
+            if(usingmemo(idx+i,nums,n,dp)==true){ 
+                dp[idx]=1;
+                return true;
             }
         }
-        return dp[0];
+        dp[idx]=0;
+        return false;
     }
+
     public boolean optimized(int[] nums){
         int n=nums.length;
         int maxreach=0;
@@ -18,13 +40,14 @@ class Solution {
                 return false;
             maxreach=Math.max(nums[i]+i,maxreach);
         }
-        //System.out.println(maxreach);
-        //if(maxreach>=n-1)
-          //  return true;
         return true;
     }
     public boolean canJump(int[] nums) {
-        //return usingdp(nums);
-        return optimized(nums);
+        int n=nums.length;
+        //return usingdp(0,nums,n);
+        int[] dp=new int[n];
+        Arrays.fill(dp,-1);
+        return usingmemo(0,nums,n,dp);
+        //return optimized(nums);
     }
 }

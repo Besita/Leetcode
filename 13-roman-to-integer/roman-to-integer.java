@@ -10,22 +10,18 @@ class Solution {
         map.put('M',1000);
         int n=s.length();
         int ans=0;
+        //If a symbol is smaller than the one after it → subtract it. Otherwise → add it.
+        char prev=' ';
         for(int i=n-1;i>=0;i--){
-            char ch=s.charAt(i);
-            if((ch=='V' || ch=='X') && (i>0 && s.charAt(i-1)=='I')){
-                ans+=map.get(ch)-1;
-                i--;
-            }
-            else if((ch=='L' || ch=='C') && (i>0 && s.charAt(i-1)=='X')){
-                ans+=map.get(ch)-10;
-                i--;
-            }
-            else if((ch=='D' || ch=='M') && (i>0 && s.charAt(i-1)=='C')){
-                ans+=map.get(ch)-100;
+            char curr=s.charAt(i);
+            if(i>0)
+                prev=s.charAt(i-1);
+            if(i>0 && map.get(prev) < map.get(curr)){
+                ans+=map.get(curr)-map.get(prev);
                 i--;
             }
             else{
-                ans+=map.get(ch);
+                ans+=map.get(curr);
             }
         }
         return ans;
@@ -71,8 +67,8 @@ class Solution {
     }
     public int romanToInt(String s) {
         //TC:O(n) SC:O(n)
-        //return usingHashMap(s);
+        return usingHashMap(s);
         //TC:O(n) SC:O(1)
-        return usingSwitch1(s);
+        //return usingSwitch1(s);
     }
 }

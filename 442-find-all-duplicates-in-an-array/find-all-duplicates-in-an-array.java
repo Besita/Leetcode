@@ -20,10 +20,10 @@ class Solution {
         List<Integer> ans=new ArrayList<>();
         int i=0;
         while(i<n){
-            if(nums[i]==i+1)
-                i++;
-            else if(nums[nums[i]-1]!=nums[i])//nums[i]!=i+1 && 
+            if(nums[i]!=i+1 && nums[nums[i]-1]!=nums[i])
                 swap(nums,i,nums[i]-1);
+            else
+                i++;
         }
         for(i=0;i<n;i++){
             if(nums[i]!=i+1)
@@ -32,8 +32,8 @@ class Solution {
         return ans;
     }
     public List<Integer> findDuplicates(int[] nums) {
-        return Method1(nums);
-        //return Method2(nums); //cyclic sort
+        //return Method1(nums);
+        return Method2(nums); //cyclic sort
         
     }
 }

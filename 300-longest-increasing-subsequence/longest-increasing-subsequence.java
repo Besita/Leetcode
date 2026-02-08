@@ -1,10 +1,5 @@
 class Solution {
-    public void printlist(List<Integer> temp){
-        System.out.println();
-        for(int i:temp){
-            System.out.print(i+" ");
-        }
-    }
+    
     public int recursion(int idx,int n,int prev,int[] nums){
         if(idx==n)
             return 0;
@@ -24,6 +19,7 @@ class Solution {
         int[][] dp=new int[n+1][n+1];
         for(int i=0;i<=n;i++)
             Arrays.fill(dp[i],-1);
+        //memoization
         return dp(0,-1,n,nums,dp);
     }
 
@@ -36,13 +32,10 @@ class Solution {
             return dp[idx][prev+1];
         
         int notpick=dp(idx+1,prev,n,nums,dp);
-        //printlist(temp);
         int pick=0;
         if(prev==-1 || nums[prev]<nums[idx]){            
             pick=1+dp(idx+1,idx,n,nums,dp);
         }        
-                
-        //printlist(temp);
         return dp[idx][prev+1]=Math.max(pick,notpick);
     }
 

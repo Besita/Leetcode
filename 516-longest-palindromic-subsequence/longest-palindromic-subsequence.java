@@ -25,10 +25,10 @@ class Solution {
         int take=0;
         if(s.charAt(left)==s.charAt(right))
             take=2+memoization(left+1,right-1,s,dp);
-        
-        int nottake=Math.max(memoization(left+1,right,s,dp),memoization(left,right-1,s,dp));
+        else
+            take=Math.max(memoization(left+1,right,s,dp),memoization(left,right-1,s,dp));
 
-        return dp[left][right]=Math.max(take,nottake);
+        return dp[left][right]=take;
     }
     public int longestPalindromeSubseq(String s) {
         int n=s.length();

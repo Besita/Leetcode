@@ -29,6 +29,24 @@ class Solution {
 
         return dp[left][right]=Math.max(take,nottake);
     }
+    
+    public int memoization2(int left,int right,String s,int[][] dp){
+        if(left==right)
+            return 1;
+        else if(left>right)
+            return 0;
+        
+        if(dp[left][right]!=-1)
+            return dp[left][right];
+
+        int take=0;
+        if(s.charAt(left)==s.charAt(right))
+            take=2+memoization(left+1,right-1,s,dp);
+        else
+            take=Math.max(memoization(left+1,right,s,dp),memoization(left,right-1,s,dp));
+
+        return dp[left][right]=take;
+    }
     public int minInsertions(String s) {
         int n=s.length();
         int[][] dp=new int[n+1][n+1];
@@ -36,7 +54,7 @@ class Solution {
             Arrays.fill(dp[i],-1);
         
         //int longPalin=recursion(0,n-1,s);
-        int longPalin=memoization(0,n-1,s,dp);
+        int longPalin=memoization2(0,n-1,s,dp);
         return n-longPalin;
     }
 }

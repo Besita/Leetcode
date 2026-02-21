@@ -3,7 +3,7 @@ class Solution {
         Arrays.sort(points,(a,b)->Integer.compare(a[0],b[0]));
         int count=0;
         int n=points.length;
-        List<int[]> ans=new ArrayList<>();
+
         for(int i=0;i<n;i++){
             int start=points[i][0];
             int end=points[i][1];
@@ -13,7 +13,6 @@ class Solution {
                 i++;
             }
             count++;
-            ans.add(new int[]{start,end});
         }
         return count;
     }

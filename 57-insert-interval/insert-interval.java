@@ -7,8 +7,7 @@ class Solution {
             return ans.toArray(new int[ans.size()][]);
         }
 
-        int i=0;   
-            
+        int i=0;               
         // Case 1: No overlapping before merging intervals
         while(i<n && newInterval[0]>intervals[i][1]){
             ans.add(intervals[i]);

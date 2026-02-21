@@ -12,8 +12,9 @@ class Solution {
                 end=Math.min(end,points[i+1][1]);
                 i++;
             }
+            count++;
             ans.add(new int[]{start,end});
         }
-        return ans.size();
+        return count;
     }
 }

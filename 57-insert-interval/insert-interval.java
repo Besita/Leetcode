@@ -9,19 +9,19 @@ class Solution {
 
         int i=0;   
             
-            //No overlapping
-        while(i<n && intervals[i][1]<newInterval[0]){
+        // Case 1: No overlapping before merging intervals
+        while(i<n && newInterval[0]>intervals[i][1]){
             ans.add(intervals[i]);
             i++;
         }
-
-        while(i<n && newInterval[1]>=intervals[i][0] ){
+        // Case 2: Overlapping and merging intervals
+        while(i<n && intervals[i][0]<=newInterval[1]){//newInterval[1]>=intervals[i][0] 
             newInterval[0]=Math.min(intervals[i][0],newInterval[0]);
             newInterval[1]=Math.max(newInterval[1],intervals[i][1]);
             i++;
         }
         ans.add(newInterval);
-                    
+        // Case 3: No overlapping after merging newInterval    
         while(i<n){
             ans.add(intervals[i]);
             i++;

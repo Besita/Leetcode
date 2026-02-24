@@ -8,12 +8,12 @@ class Solution {
             int mid=(low+high)/2;
             if(nums[mid]==target)
                 return true;
-            if(nums[low]==nums[mid] && nums[mid]==nums[high]){
+            /*if(nums[low]==nums[mid] && nums[mid]==nums[high]){
                 low++;
                 high--;
                 continue;
-            }            
-            if(nums[mid]<=nums[high]){//sorted on right half
+            }    */        
+            else if(nums[mid]<=nums[high]){//sorted on right half
                 if(nums[mid]<=target && target<=nums[high])
                     low=mid+1;
                 else
@@ -41,11 +41,11 @@ class Solution {
             int mid=(left+right)/2;            
             if(nums[mid]==target)
                 return true;
-            else if(nums[left]==nums[mid] && nums[mid]==nums[right]){
+            else if(nums[left]==nums[mid] && nums[mid]==nums[right]){  // TC: [1,0,1,1,1] condition to handle duplicate values
                 left++;
                 right--;
                 continue;
-            }            
+            }           
             else if(nums[left]<=nums[mid]){ //left is sorted
                 if(nums[left]<=target && target<=nums[mid])
                     right=mid-1;
@@ -63,6 +63,6 @@ class Solution {
     }
     public boolean search(int[] nums, int target) {
         //return method1(nums,target);
-        return method2(nums,target);
+        return method2(nums,target); //0 ms
     }
 }

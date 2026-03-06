@@ -7,7 +7,7 @@ class Solution {
         for(int i=1;i<s.length();i++){
             if(s.charAt(i)=='1'){
                 if(prefix[i-1]==0)
-                    count++;
+                    return false;
                 prefix[i]=prefix[i-1]+1;
             }else{
                 prefix[i]=0;

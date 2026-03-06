@@ -3,7 +3,7 @@ class Solution {
         int count=0;
         int n=s.length();
         int[] prefix=new int[n];
-        prefix[0]=(s.charAt(0)=='1')?1:0;
+        prefix[0]=1;//there is no leading zeros
         if(prefix[0]==1)
             count=1;
         for(int i=1;i<s.length();i++){

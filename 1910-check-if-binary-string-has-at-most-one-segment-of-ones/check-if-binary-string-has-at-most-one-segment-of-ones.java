@@ -1,20 +1,19 @@
 class Solution {
     public boolean checkOnesSegment(String s) {
         int n=s.length();
-        int[] prefix=new int[n];
-        prefix[0]=1;//there is no leading zeros
+        //int[] prefix=new int[n];
+        int prefixsum=1;//there is no leading zeros
         int count=1;
         for(int i=1;i<s.length();i++){
             if(s.charAt(i)=='1'){
-                if(prefix[i-1]==0)
+                if(prefixsum==0)
                     return false;
-                prefix[i]=prefix[i-1]+1;
+                prefixsum++;
             }else{
-                prefix[i]=0;
+                prefixsum=0;
             }
         }
-        if(count>1)
-            return false;
+
         return true;
     }
 }

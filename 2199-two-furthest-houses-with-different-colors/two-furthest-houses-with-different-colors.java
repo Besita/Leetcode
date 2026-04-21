@@ -15,13 +15,23 @@ class Solution {
         int maxdist=Integer.MIN_VALUE;
         int start=0;
         int end=n-1;
-        while(end<n){
-            if(colors[start]!=colors[end]){
+        while(start<n){ ////don't work for testcase [6,6,6,6,6,6,6,6,6,19,19,6,6]
+            if(colors[start]!=colors[end]){ 
                 maxdist=Math.max(maxdist,end-start);
-                return maxdist;
+                break;
             }
             else
                 start++;
+        }
+        start=0;
+        end=n-1;
+        while(end>=0){ ////don't work for testcase [6,6,19,19,6,6,6,6,6,6,6,6]
+            if(colors[start]!=colors[end]){
+                maxdist=Math.max(maxdist,end-start);
+                break;
+            }
+            else
+                end--;
         }
         return maxdist;
     }
@@ -36,7 +46,7 @@ class Solution {
         }
         for(int i=n-1;i>=0;i--){
             if(colors[i]!=colors[0]){ 
-                maxdist=Math.max(maxdist,i);
+                maxdist=Math.max(maxdist,i); //we need maxdist, so once you find distance break it, because other distancces will be less than this
                 break;
             }
         }
@@ -44,8 +54,8 @@ class Solution {
     }
     public int maxDistance(int[] colors) {
         //return bruteForce(colors);
-        //return twopointer(colors); //don't work for testcase [6,6,6,6,6,6,6,6,6,19,19,6,6]
+        return twopointer(colors); //don't work for testcase [6,6,6,6,6,6,6,6,6,19,19,6,6]
         //we need to calculate distancce from both sides instead of two pointer
-        return optimised(colors);
+        //return optimised(colors);
     }
 }

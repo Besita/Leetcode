@@ -33,8 +33,8 @@ class Solution {
                 bucket[val]--;
             }
 
-            //nums=Arrays.copyOf(output,n);
-            System.arraycopy(output,0,nums,0,n);
+            nums=Arrays.copyOf(output,n);
+            //System.arraycopy(output,0,nums,0,n);
             exp=exp*10;
         }
 

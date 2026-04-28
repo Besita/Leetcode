@@ -29,7 +29,7 @@ class Solution {
         int watertrapped=0;
         int max_left=0;
         int max_right=0;
-        while(start<end){
+        while(start<=end){
             if(height[start]<=height[end]){
                 max_left=Math.max(max_left,height[start]);
                 watertrapped+=max_left-height[start];

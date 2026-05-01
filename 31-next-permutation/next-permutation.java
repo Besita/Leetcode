@@ -23,7 +23,7 @@ class Solution {
 
         if(idx>=0){
             int curr=nums[idx];
-            for(int i=n-1;i>=0;i--){
+            for(int i=n-1;i>idx;i--){
                 if(nums[i]>curr){ 
                     swap(nums,i,idx);
                     break;

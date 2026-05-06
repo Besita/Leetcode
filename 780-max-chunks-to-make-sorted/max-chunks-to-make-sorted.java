@@ -20,8 +20,19 @@ class Solution {
         return chunks;
     }
     
+    public int optimised(int[] arr) {
+        int n=arr.length;
+        int max_so_far=0;
+        int split=0;
+        for(int i=0;i<n;i++){
+            max_so_far=Math.max(max_so_far,arr[i]);
+            if(max_so_far==i)
+                split++;
+        }
+        return split;
+    }
     public int maxChunksToSorted(int[] arr) {//prefixmax<suffixmin chunk++
-        return prefixmaxsuffixmin(arr);
-
+        //return prefixmaxsuffixmin(arr);  //needed only if duplicates are present 
+        return optimised(arr); //max_so_far==idx (split)
     }
 }

@@ -1,22 +1,24 @@
 class Solution {
-    int usingmaxprefixminsuffix(int[] arr){
+    public int usingmaxprefixminsuffix(int[] arr){
         int n=arr.length;
-        int[] maxprefix=new int[n];
-        int[] minsuffix=new int[n];
-        maxprefix[0]=arr[0];
+        int[] prefixmax=new int[n];
+        int[] suffixmin=new int[n];
+
+        prefixmax[0]=arr[0];
         for(int i=1;i<n;i++)
-            maxprefix[i]=Math.max(maxprefix[i-1],arr[i]);
+            prefixmax[i]=Math.max(prefixmax[i-1],arr[i]);
 
-        minsuffix[n-1]=arr[n-1];
+        suffixmin[n-1]=arr[n-1];
         for(int i=n-2;i>=0;i--)
-            minsuffix[i]=Math.min(minsuffix[i+1],arr[i]);
+            suffixmin[i]=Math.min(suffixmin[i+1],arr[i]);
 
-        int ans=1;
+        int maxchunks=1;
         for(int i=1;i<n;i++){
-            if(maxprefix[i-1]<=minsuffix[i])
-                ans++;
+            if(prefixmax[i-1]<=suffixmin[i])
+                maxchunks++;
         }
-        return ans;
+            
+        return maxchunks;
     }
     public int maxChunksToSorted(int[] arr) {
         return usingmaxprefixminsuffix(arr);

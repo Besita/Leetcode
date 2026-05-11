@@ -1,39 +1,37 @@
 class Solution {
-    public boolean matches(int[] a,int[] b){
+    boolean checkPermutation(String str1,int[] temp){
+        int n=str1.length();
+        for(int i=0;i<n;i++){
+            int ch=str1.charAt(i);
+            if(temp[ch-'a']>0)
+                temp[ch-'a']--;
+            else
+                return false;
+        }
         for(int i=0;i<26;i++){
-            if(a[i]!=b[i])
+            if(temp[i]!=0)
                 return false;
         }
         return true;
     }
     public boolean checkInclusion(String s1, String s2) {
-        int n1=s1.length();
-        int n2=s2.length();
-        if(n1>n2)   
-            return false;
+        int winsize=s1.length();
+        int m=s2.length();
 
-        int[] str1=new int[26];
-        int[] str2=new int[26];
-
-        for(int i=0;i<n1;i++){
-            str1[s1.charAt(i)-'a']++;
-            str2[s2.charAt(i)-'a']++;
+        int[] arr=new int[26];
+        for(int i=0;i<winsize;i++){
+            char ch=s1.charAt(i);
+            arr[ch-'a']++;
         }
 
-        if(Arrays.equals(str1,str2))
-            return true;
-        //if(matches(str1,str2))
-         //   return true;
+        int[] temp=new int[26];
 
-        int start=0;
-        for(int i=n1;i<n2;i++){
-            str2[s2.charAt(i)-'a']++;
-            str2[s2.charAt(start)-'a']--;
-            start++;
-            if(Arrays.equals(str1,str2))//if(matches(str1,str2))
+        for(int i=0;i<=m-winsize;i++){ 
+            System.arraycopy(arr,0,temp,0,26);
+            boolean isPresent=checkPermutation(s2.substring(i,i+winsize),temp);
+            if(isPresent==true)
                 return true;
         }
-        return false;    
-    }   
-    
+        return false;
+    }
 }

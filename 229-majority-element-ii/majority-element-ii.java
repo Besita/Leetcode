@@ -31,10 +31,10 @@ class Solution {
                 count2++;
             }
             else if(nums[i]==cand1)
-                count1++;
+                count1++;   
             else if(nums[i]==cand2)
                 count2++;
-            else{
+            else if(nums[i]!=cand1 && nums[i]!=cand2){  
                 count1--;
                 count2--;
             }
@@ -79,4 +79,4 @@ class Solution {
         //return usingsorting(nums);
         return usingVoterAlgo(nums);//using Moore's voter algorithm
     }
-}
+}         

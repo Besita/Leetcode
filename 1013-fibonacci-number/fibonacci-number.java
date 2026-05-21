@@ -16,10 +16,7 @@ class Solution {
 
         return recursion(n-1)+recursion(n-2);
     }
-    public int memoization(int n,int[] dp){
-        if(n<=1)
-            return n;
-        
+    public int memoization(int n,int[] dp){      
         if(dp[n]!=-1)
             return dp[n];
 
@@ -27,13 +24,17 @@ class Solution {
     }
     public int fib(int n) {
         //return topdown(n);
-        return recursion(n);
-        /*int[] dp=new int[n+1];
+        //return recursion(n);
+        int[] dp=new int[n+1];
         for(int i=0;i<=n;i++){
             dp[i]=-1;
         }
+
+        if(n<=1)
+            return n;
+            
         dp[0]=0;
         dp[1]=1;
-        return memoization(n,dp);*/
+        return memoization(n,dp);
     }
 }

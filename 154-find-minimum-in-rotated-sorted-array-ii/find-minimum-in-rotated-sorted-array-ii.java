@@ -1,9 +1,9 @@
 class Solution {
     public int findMin(int[] nums) {
         int n=nums.length;
-        if(n==1 || (nums[0]<nums[n-1]))
+        if(n==1 || (nums[0]<nums[n-1]))//if nums[0] is smallest (0,1,2,3)
             return nums[0];
-        if(nums[n-2]>nums[n-1])
+        if(nums[n-2]>nums[n-1]) //if nums[n-1] is smallest (1,2,3,0)
             return nums[n-1];
         
         int left=0;
@@ -13,16 +13,17 @@ class Solution {
         
             if(mid-1>=0 && nums[mid-1]>nums[mid])  //if prev elem is greater then that is the smallest because always prev eleemtn less than curr in sorted array
                 return nums[mid];
-            else if(nums[left]==nums[mid] && nums[mid]==nums[right]){
+            else if(nums[left]==nums[mid] && nums[mid]==nums[right]){ //handling duplicates
                 left++;
                 right--;
                 continue;
             }
-            else if(nums[mid]>nums[right]) //min is in right half
+            else if(nums[mid]>nums[right]){//min is in right half
                 left=mid+1;
+            }
             else
                 right=mid-1;  //min is in left half
         }
-        return nums[left];
+        return nums[left]; //testcase:(1,1,1,1)
     }
 }

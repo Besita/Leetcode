@@ -1,13 +1,11 @@
 class Solution {
     public int findright(int[] nums,int target,int start,int end){
         int right=start;
-        //System.out.println(start);
-        //System.out.println(end);
         while(start<=end){
             int mid=(start+end)/2;
             if(nums[mid]==target){ 
                 right=mid;
-                System.out.println(right);
+                //System.out.println(right);
                 if(mid+1<end && nums[mid+1]!=target)  
                     return right;              
                 start=mid+1;

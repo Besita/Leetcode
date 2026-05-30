@@ -3,8 +3,8 @@ class Solution {
         int n=nums.length;
         if(n==1 || (nums[0]<nums[n-1]))//if nums[0] is smallest (0,1,2,3)
             return nums[0];
-        if(nums[n-2]>nums[n-1]) //if nums[n-1] is smallest (1,2,3,0)
-            return nums[n-1];
+        //if(nums[n-2]>nums[n-1]) //if nums[n-1] is smallest (1,2,3,0)
+        //    return nums[n-1];
         
         int left=0;
         int right=n-1;

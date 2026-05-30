@@ -17,7 +17,7 @@ class Solution {
                 left++;
                 right--;
             }
-            else if(nums[mid]>nums[right]){//min is in right half
+            else if(nums[right]<nums[mid]){//min is in right half
                 left=mid+1;
             }
             else

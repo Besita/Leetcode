@@ -1,85 +1,47 @@
- class Solution {    
-    /*public int findStartPos(int[] nums,int s,int e,int target){
-        int ans=-1;
-        
-        while(s<=e){
-            int mid=(s+e)/2;
+class Solution {
+    public int findright(int[] nums,int target,int start,int end){
+        int right=start;
+        //System.out.println(start);
+        //System.out.println(end);
+        while(start<=end){
+            int mid=(start+end)/2;
             if(nums[mid]==target){ 
-                ans=mid;
-                e=mid-1;
+                right=mid;
+                System.out.println(right);
+                if(mid+1<end && nums[mid+1]!=target)  
+                    return right;              
+                start=mid+1;
             }
             else if(nums[mid]<target)
-                s=mid+1;
-            else if(nums[mid]>target)
-                e=mid-1;
+                start=mid+1;
+            else
+                end=mid-1;
         }
-        return ans;
+        return right;
     }
+    public int[] searchRange(int[] nums, int target) {
+        int n=nums.length;
+        int start=0;
+        int end=n-1;
+        int curr=-1;
+        while(start<=end){
+            int mid=(start+end)/2;
+            if(nums[mid]==target){ 
+                curr=mid;
+                end=mid-1;
+                if(mid-1>=0 && nums[mid-1]!=target)
+                    break;
+            }
+            else if(nums[mid]<target)
+                start=mid+1;
+            else
+                end=mid-1;
 
-    public int findEndPos(int[] nums,int s,int e,int target){
-        int ans=-1;
-        while(s<=e){
-            int mid=(s+e)/2;
-            if(nums[mid]==target){ 
-                ans=mid;
-                s=mid+1;
-            }
-            else if(nums[mid]<target)
-                s=mid+1;
-            else if(nums[mid]>target)
-                e=mid-1;
         }
-        return ans;
-    }
-    public int[] searchRange(int[] nums, int target) {
-        int n=nums.length;
-        int s=0;
-        int e=n-1;
- 
-        int start=findStartPos(nums,s,e,target);
-        int end=findEndPos(nums,s,e,target);
-               
-        return new int[]{start,end};
-    }   */
-    int findlower(int[] nums,int target){
-        int n=nums.length;
-        int start=0;
-        int end=n-1;
-        int ans=-1;
-        while(start<=end){
-            int mid=(start+end)/2;
-            if(nums[mid]==target){ 
-                ans=mid;
-                end=mid-1;
-            }
-            else if(nums[mid]<target)
-                start=mid+1;
-            else
-                end=mid-1;
-        }
-        return ans;
-    }
-    int findupper(int[] nums,int target){
-        int n=nums.length;
-        int start=0;
-        int end=n-1;
-        int ans=-1;
-        while(start<=end){
-            int mid=(start+end)/2;
-            if(nums[mid]==target){ 
-                ans=mid;
-                start=mid+1;
-            }
-            else if(nums[mid]<target)
-                start=mid+1;
-            else
-                end=mid-1;
-        }
-        return ans;
-    }
-    public int[] searchRange(int[] nums, int target) {
-        int upper=findupper(nums,target);
-        int lower=findlower(nums,target);
-        return new int[]{lower,upper};
+        if(curr==-1)
+            return new int[]{-1,-1};   
+
+        int right=findright(nums,target,curr,n-1);
+        return new int[]{curr,right};
     }
 }

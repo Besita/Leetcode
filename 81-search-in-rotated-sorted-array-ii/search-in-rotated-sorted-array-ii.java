@@ -3,16 +3,20 @@ class Solution {
         int n=nums.length;
         int low=0;
         int high=n-1;
-        
+
+        while(low<=high && nums[low]==nums[high] && nums[low]!=target){
+            low++;
+            high--;
+        }
         while(low<=high){
             int mid=(low+high)/2;
             if(nums[mid]==target)
                 return true;
-            else if(nums[low]==nums[mid] && nums[mid]==nums[high]){
+            /*else if(nums[low]==nums[mid] && nums[mid]==nums[high]){
                 low++;
                 high--;
                 continue;
-            }         
+            }   */      
             else if(nums[mid]<=nums[high]){//sorted on right half
                 if(nums[mid]<=target && target<=nums[high])
                     low=mid+1;

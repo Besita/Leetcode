@@ -8,11 +8,11 @@ class Solution {
             int mid=(low+high)/2;
             if(nums[mid]==target)
                 return true;
-            /*if(nums[low]==nums[mid] && nums[mid]==nums[high]){
+            else if(nums[low]==nums[mid] && nums[mid]==nums[high]){
                 low++;
                 high--;
                 continue;
-            }    */        
+            }         
             else if(nums[mid]<=nums[high]){//sorted on right half
                 if(nums[mid]<=target && target<=nums[high])
                     low=mid+1;
@@ -62,7 +62,7 @@ class Solution {
         return false; 
     }
     public boolean search(int[] nums, int target) {
-        //return method1(nums,target);
-        return method2(nums,target); //0 ms
+        return method1(nums,target);
+        //return method2(nums,target); //0 ms
     }
 }

@@ -16,7 +16,7 @@ class Solution {
             else if(nums[left]==nums[mid] && nums[mid]==nums[right]){ //handling duplicates
                 left++;
                 right--;
-                continue;
+                //continue;
             }
             else if(nums[mid]>nums[right]){//min is in right half
                 left=mid+1;

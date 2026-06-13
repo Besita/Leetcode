@@ -28,7 +28,7 @@ class Solution {
             str[i]=1;
             curr.add(strs[i]);
             for(int j=i+1;j<n;j++){
-                if(str[j]==1 || (strs[i].length()!=strs[j].length()))
+                if(str[j]==1)
                     continue;
                 
                 if(checkAnagram(strs[i],strs[j])){ 

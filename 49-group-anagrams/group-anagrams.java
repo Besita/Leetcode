@@ -15,8 +15,7 @@ class Solution {
         }
         return true;
     }
-
-    public List<List<String>> groupAnagrams(String[] strs) {
+    public List<List<String>> usingBruteForce(String[] strs) {
         int n=strs.length;
         int[] str=new int[n];
         List<List<String>> ans=new ArrayList<>();
@@ -39,5 +38,24 @@ class Solution {
             ans.add(curr);
         }
         return ans;
+    }
+    public List<List<String>> usingOptimisedHashmap(String[] strs) {
+        int n=strs.length;
+        HashMap<String,List<String>> map=new HashMap<>();
+        List<List<String>> ans=new ArrayList<>();
+        for(int i=0;i<n;i++){
+            char[] curr=strs[i].toCharArray();
+            Arrays.sort(curr);
+            String sortedString=new String(curr);
+            if(!map.containsKey(sortedString)){                
+                map.put(sortedString,new ArrayList<>());
+            }
+            map.get(sortedString).add(strs[i]);              
+        }
+        return new ArrayList<>(map.values());
+    }
+    public List<List<String>> groupAnagrams(String[] strs) {
+        ///return usingBruteForce(strs);  //TC:534 ms
+        return usingOptimisedHashmap(strs);
     }
 }

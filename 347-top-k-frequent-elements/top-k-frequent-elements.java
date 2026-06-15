@@ -44,9 +44,9 @@ class Solution {
     }
 
     public int[] topKFrequent(int[] nums, int k) {
-        //return usingHashmap(nums,k);
+        return usingHashmap(nums,k);//15 ms
 
-        return usingBucketsort(nums,k);
+        //return usingBucketsort(nums,k);//12 ms
         
     }
 }

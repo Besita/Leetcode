@@ -11,10 +11,11 @@ class Solution {
 
         int count=0;
         int[] ans=new int[k];
-        for(Map.Entry<Integer,Integer> iter:list){
-            if(count<k){
-                ans[count++]=iter.getKey();
-            }
+        for(Map.Entry<Integer,Integer> iter:list){            
+            ans[count++]=iter.getKey();
+            
+            if(count==k)
+                break;
         }
         return ans;
     }

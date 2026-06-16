@@ -40,13 +40,9 @@ class Solution {
         String largeWordName="";
         for(String iter:map.keySet()){
             int currlen=map.get(iter);
-            if(currlen>largelen){
+            if(currlen>largelen || (currlen==largelen && iter.compareTo(largeWordName)>0)){
                 largeWordName=iter;
                 largelen=currlen;
-            }
-            else if(currlen==largelen){
-                if(iter.compareTo(largeWordName)>0)
-                    largeWordName=iter;
             }
         }
 

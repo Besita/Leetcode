@@ -8,7 +8,7 @@ class Solution {
             map.put(senders[i],map.getOrDefault(senders[i],0)+word.length);
         }
        
-        /*//TC: O(n log n)
+        /*//Method 1 : TC: O(n log n)
         List<Map.Entry<String,Integer>> list=new ArrayList<>(map.entrySet());
 
         Collections.sort(list,(a,b)-> { 
@@ -19,6 +19,7 @@ class Solution {
         
         return list.get(0).getKey();*/
 
+        /*//Method 2:
         int largeWord=0;
         String largeWordName="";
         for(Map.Entry<String,Integer> iter:map.entrySet()){
@@ -29,6 +30,23 @@ class Solution {
             else if(iter.getValue()==largeWord){
                 if(iter.getKey().compareTo(largeWordName)>0)
                     largeWordName=iter.getKey();
+            }
+        }
+
+        return largeWordName;*/
+
+        //Method3:
+        int largelen=0;
+        String largeWordName="";
+        for(String iter:map.keySet()){
+            int currlen=map.get(iter);
+            if(currlen>largelen){
+                largeWordName=iter;
+                largelen=currlen;
+            }
+            else if(currlen==largelen){
+                if(iter.compareTo(largeWordName)>0)
+                    largeWordName=iter;
             }
         }
 

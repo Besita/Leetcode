@@ -5,7 +5,6 @@ class Solution {
         return nums[n/2];
     }
     int usingvoteralgo(int[] nums){
-       // Arrays.sort(nums);
         int n=nums.length;
         int count1=0;
         int candidate1=0;

@@ -34,7 +34,7 @@ class Solution {
         while(right<n && left<n){
             if(set.contains(s.charAt(right))==false){
                 set.add(s.charAt(right));
-                maxlen=Math.max(maxlen,right-left+1);
+                
             }
             else{               
                 while(s.charAt(left)!=s.charAt(right)){ 
@@ -43,7 +43,9 @@ class Solution {
                 }
                 left++;
             }
+            maxlen=Math.max(maxlen,right-left+1);
             right++;
+
         }
         return maxlen;
     }
@@ -127,8 +129,8 @@ class Solution {
     }
 
     public int lengthOfLongestSubstring(String s) {
-        return hashmap(s); //5ms
-        //return hashset(s); //4ms
+        //return hashmap(s); //5ms
+        return hashset(s); //4ms
         //return usingarray2(s); //2ms
     }
 }

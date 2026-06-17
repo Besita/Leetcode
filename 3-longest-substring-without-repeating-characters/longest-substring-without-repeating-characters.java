@@ -9,16 +9,17 @@ class Solution {
             return 0;        
         for(right=0;right<n;right++){ //while(right<n && left<n){
             if(map.containsKey(s.charAt(right))==false){
-                map.put(s.charAt(right),1);
-                maxlen=Math.max(maxlen,right-left+1);
+                map.put(s.charAt(right),right);                
             }
             else{               
                 while(s.charAt(left)!=s.charAt(right)){ 
                     map.remove(s.charAt(left));          
                     left++;    
                 }
+                map.put(s.charAt(right),right);
                 left++;
             }
+            maxlen=Math.max(maxlen,right-left+1);
         }
         return maxlen;
     }
@@ -126,8 +127,8 @@ class Solution {
     }
 
     public int lengthOfLongestSubstring(String s) {
-        //return hashmap(s); //5ms
+        return hashmap(s); //5ms
         //return hashset(s); //4ms
-        return usingarray2(s); //2ms
+        //return usingarray2(s); //2ms
     }
 }

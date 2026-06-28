@@ -7,7 +7,7 @@ class Solution {
         int maxfreq=0;
         for(int right=0;right<n;right++){
             map[s.charAt(right)-'A']++;
-            maxfreq=map[s.charAt(right)-'A'];
+            maxfreq=Math.max(maxfreq,map[s.charAt(right)-'A']);
             int currwin=right-left+1;
             while((currwin-maxfreq) > k){
                 map[s.charAt(left)-'A']--;
@@ -34,17 +34,17 @@ class Solution {
         for(int right=0;right<n;right++){
             freq[s.charAt(right)-'A']++;
             maxfreq=findmaxfreq(freq);
-            while(right-left+1-maxfreq>k){
+            while(right-left+1-maxfreq>k){  //maxfreq+k=winlen -> winlen-maxfreq=k
                 freq[s.charAt(left)-'A']--;
                 left++;
                 maxfreq=findmaxfreq(freq);
             }
-            maxlen=Math.max(maxlen,right-left+1);  
+            maxlen=Math.max(maxlen,right-left+1);  //atmost k times so <=k find maxlen //if exact k then =k find maxlen
         }
         return maxlen;
     }
     public int characterReplacement(String s, int k) {
-        //return optimised(s,k);//TC:O(n) SC:O(n) 
-        return usingfreqArray(s,k);
+        return optimised(s,k);//TC:O(n) SC:O(n) 
+        //return usingfreqArray(s,k);
     }
 }

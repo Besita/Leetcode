@@ -10,6 +10,7 @@ class Solution {
             maxfreq=Math.max(maxfreq,map[s.charAt(right)-'A']);
             int currwin=right-left+1;
             while((currwin-maxfreq) > k){
+                //no need to recalculate maxfreq because it wont affect the answer
                 map[s.charAt(left)-'A']--;
                 left++;
                 currwin--;

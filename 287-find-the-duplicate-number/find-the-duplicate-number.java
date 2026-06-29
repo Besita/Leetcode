@@ -1,4 +1,5 @@
 class Solution {
+    
     public int arraymodified(int[] nums){
         int n=nums.length;
         for(int i=0;i<n;i++){
@@ -9,7 +10,23 @@ class Solution {
         return -1;
     }
     public int slowfastapproach(int[] nums){
+        int n=nums.length;
         int slow=nums[0];
+        int fast=nums[0];
+        do{
+            slow=nums[slow];
+            fast=nums[nums[fast]];
+        }while(slow!=fast);
+        System.out.println(slow);
+        System.out.println(fast);
+        slow=nums[0];
+        while(slow!=fast){
+            slow=nums[slow];
+            fast=nums[fast];
+        }
+        return slow;
+        
+        /*int slow=nums[0];
         int fast=nums[0];
         do{
             slow=nums[slow];
@@ -20,10 +37,13 @@ class Solution {
             slow=nums[slow];
             fast=nums[fast];
         }
-        return slow;
+        return slow;*/
     }
+    
     public int findDuplicate(int[] nums) {
         //return arraymodified(nums);
         return slowfastapproach(nums);
+        //return arraySum(nums);
+        
     }
 }

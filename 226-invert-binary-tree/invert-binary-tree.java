@@ -26,20 +26,21 @@ class Solution {
         TreeNode right=recursion(root.right);      
         return root;
     }*/
-    TreeNode recursion(TreeNode root){
+    void recursion(TreeNode root){
         if(root==null)
-            return root;
+            return ;
 
-        TreeNode left=recursion(root.left);
-        TreeNode right=recursion(root.right);  
+        recursion(root.left);
+        recursion(root.right);  
 
         TreeNode temp=root.left;
         root.left=root.right;
         root.right=temp;
-            
-        return root;
+
+        return;
     }
     public TreeNode invertTree(TreeNode root) {        
-        return recursion(root);
+        recursion(root);
+        return root;
     }
 }

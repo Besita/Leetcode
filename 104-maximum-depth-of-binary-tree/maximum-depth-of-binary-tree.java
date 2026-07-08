@@ -15,16 +15,22 @@
  */
 class Solution {
     int recursion(TreeNode root){
-        if(root==null)
+        if(root.left==null && root.right==null)
             return 0;
 
-        int left=1+recursion(root.left);
-        int right=1+recursion(root.right);
+        int left=0,right=0;
+        if(root.left!=null)
+            left=1+recursion(root.left);
+        
+        if(root.right!=null)
+            right=1+recursion(root.right);
         
         return Math.max(left,right);
         
     }
-    public int maxDepth(TreeNode root) {       
-        return recursion(root);
+    public int maxDepth(TreeNode root) { 
+        if(root==null)
+            return 0;      
+        return 1+recursion(root);
     }
 }

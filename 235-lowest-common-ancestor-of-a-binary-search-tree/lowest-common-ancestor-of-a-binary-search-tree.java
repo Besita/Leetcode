@@ -17,9 +17,8 @@ class Solution {
             return recursion(root.left,p,q);
         else if(p.val>root.val && q.val>root.val)
             return recursion(root.right,p,q);
-        else
-            return root;
-
+        //else //if(root.val<=q.val && p.val<=root.val)
+        return root;
     }
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(root==null)

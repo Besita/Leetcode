@@ -17,9 +17,10 @@ class Solution {
         int[] dx={-1,-1,-1,0,0,1,1,1};
         int[] dy={-1,0,1,-1,1,-1,0,1};
         Queue<pair> q=new LinkedList<>();
-        int[][] visited=new int[n][m];
+        //int[][] visited=new int[n][m];
         q.add(new pair(0,0,1));
-        visited[0][0]=1;
+        //visited[0][0]=1;
+        grid[0][0]=1;
         while(!q.isEmpty()){            
             pair curr=q.poll();
             int x=curr.x;
@@ -34,9 +35,9 @@ class Solution {
                 if(newx<0 || newy<0 || newx>=n || newy>=m)
                     continue;   
 
-                if(grid[newx][newy]==0 && visited[newx][newy]==0){
+                if(grid[newx][newy]==0){
                     q.add(new pair(newx,newy,dist+1));
-                    visited[newx][newy]=1;
+                    grid[newx][newy]=1;
                 }                                   
             }            
         }

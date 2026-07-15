@@ -1,10 +1,10 @@
 class pair{
-    int r;
-    int c;
+    int x;
+    int y;
     int min;
     pair(int r,int c,int min){
-        this.r=r;
-        this.c=c;
+        this.x=r;
+        this.y=c;
         this.min=min;
     }
 }
@@ -12,43 +12,40 @@ class Solution {
     public int orangesRotting(int[][] grid) {
         int n=grid.length;
         int m=grid[0].length;
-        int[] dx={-1,1,0,0};
-        int[] dy={0,0,-1,1};
-        
-        int Time=0;
-        int fresh=0;
-        int rotten=0;
+
         Queue<pair> q=new LinkedList<>();
+        int fresh=0;
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
                 if(grid[i][j]==2)
                     q.add(new pair(i,j,0));
-
-                if(grid[i][j]==1)
+                else if(grid[i][j]==1)
                     fresh++;
             }
         }
+        int maxTime=0;
 
+        int dx[]={-1,1,0,0};
+        int dy[]={0,0,-1,1};
         while(!q.isEmpty()){
-            pair p=q.poll();
-            int row=p.r;
-            int col=p.c;
-            int min=p.min;
-
-            Time=Math.max(Time,min);
+            pair curr=q.poll();
+            int x=curr.x;
+            int y=curr.y;
+            int time=curr.min;
+            maxTime=Math.max(maxTime,time);
             for(int i=0;i<4;i++){
-                if(row+dx[i]<0 || row+dx[i]>=n || col+dy[i]<0 || col+dy[i]>=m)
-                    continue;
-                if(grid[row+dx[i]][col+dy[i]]==1){ 
-                    grid[row+dx[i]][col+dy[i]]=2;
-                    q.add(new pair(row+dx[i],col+dy[i],min+1));
-                    rotten++;
+                int x1=x+dx[i];
+                int y1=y+dy[i];
+                if(x1>=0 && y1>=0 && x1<n && y1<m && grid[x1][y1]==1){
+                    grid[x1][y1]=2;
+                    fresh--;
+                    q.add(new pair(x1,y1,time+1));
                 }
             }
         }
-        if(fresh!=rotten)
-            return -1;
-
-        return Time;
+        if(fresh==0)
+            return maxTime;
+        
+        return -1;
     }
 }

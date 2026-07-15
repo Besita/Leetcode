@@ -25,7 +25,6 @@ class Solution {
             int x=curr.x;
             int y=curr.y;
             int dist=curr.dist;
-
             if(x==n-1 && y==m-1)
                 return dist; 
 
@@ -36,7 +35,6 @@ class Solution {
                     continue;   
 
                 if(grid[newx][newy]==0 && visited[newx][newy]==0){
-                    System.out.println("("+newx+","+newy+")");
                     q.add(new pair(newx,newy,dist+1));
                     visited[newx][newy]=1;
                 }                                   

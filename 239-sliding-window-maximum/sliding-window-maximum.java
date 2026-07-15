@@ -7,7 +7,7 @@ class Solution {
         
         for(int right=0;right<n;right++){
             //remove expired index outside window size
-            while(!dq.isEmpty() && dq.peekFirst()<=right-k)
+            while(!dq.isEmpty() && dq.peekFirst()<right-k+1)
                 dq.pollFirst();
 
             //remove elements smaller than current val in the queue

@@ -8,19 +8,17 @@ class Solution {
         String curr="0000";
         if(set.contains(curr))
             return -1;
-            
+
         Set<String> visited=new HashSet<>();
         visited.add(curr);
        
         Queue<String> q=new LinkedList<>();
         q.add(curr);
-        //System.out.print(curr+" ");
         int moves=0;
         while(!q.isEmpty()){ 
             int sz=q.size();
             for(int k=0;k<sz;k++){ 
                 curr=q.poll();
-                //System.out.print(curr+","+moves+"  ");
                 if(curr.equals(target))     return moves;
                 for(int i=0;i<curr.length();i++){
                     //increment
@@ -29,7 +27,6 @@ class Solution {
                     String incr=new String(dummy);
                     if(!set.contains(incr) && !visited.contains(incr)){
                         q.add(incr);
-                        //System.out.print(incr+" ");
                         visited.add(incr);
                     }
 
@@ -39,7 +36,6 @@ class Solution {
                     String decr=new String(dummy);
                     if(!set.contains(decr) && !visited.contains(decr)){
                         q.add(decr);
-                        //System.out.print(decr+" ");
                         visited.add(decr);
                     }
 

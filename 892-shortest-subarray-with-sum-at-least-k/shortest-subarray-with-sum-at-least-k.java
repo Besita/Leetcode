@@ -10,13 +10,10 @@ class Solution {
             prefix[i+1]=prefix[i]+nums[i];
         } 
 
-        for(int i=0;i<=n;i++)
-            System.out.print(prefix[i]+"  ");
-
         int count=Integer.MAX_VALUE;
         for(int i=1;i<=n;i++){
             while(!dq.isEmpty() && prefix[dq.peekLast()]>=prefix[i]){ 
-                System.out.println("polled from last");
+               // System.out.println("polled from last");
                 dq.pollLast();
             }
                         
@@ -24,7 +21,7 @@ class Solution {
                 int window=i-dq.peekFirst();
                 count=Math.min(window,count);
                 dq.pollFirst();
-                System.out.println(window+"  "+"polled from front");
+                //System.out.println(window+"  "+"polled from front");
             }
             dq.offerLast(i);
             
